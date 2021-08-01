@@ -3,10 +3,21 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/C346/Workspace/P01/Android-Projects/C347_L3_EX1_Demo_Database/src/main/res/layout/activity_main.xml" value="0.20520833333333333" />
+        <entry key="..\:/C346/Workspace/P01/Android-Projects/C347_L3_EX1_Demo_Database/src/main/res/layout/row.xml" value="0.7927631578947368" />
+        <entry key="..\:/C346/Workspace/P01/Android-Projects/C347_L3_PS_Revision_Notes/src/main/res/layout/activity_main.xml" value="0.2115036231884058" />
+        <entry key="..\:/C346/Workspace/P01/Android-Projects/C347_L3_PS_Revision_Notes/src/main/res/layout/activity_second.xml" value="0.2115036231884058" />
+        <entry key="..\:/C346/Workspace/P01/Android-Projects/C347_L3_PS_Revision_Notes/src/main/res/layout/row.xml" value="0.2115036231884058" />
+        <entry key="..\:/C346/Workspace/P01/Android-Projects/C347_L4_EX1_Demo_DatabaseCRUD/src/main/res/layout/activity_edit.XML" value="0.2115036231884058" />
+        <entry key="..\:/C346/Workspace/P01/Android-Projects/C347_L4_EX1_Demo_DatabaseCRUD/src/main/res/layout/activity_main.xml" value="0.2115036231884058" />
+        <entry key="..\:/C346/Workspace/P01/Android-Projects/C347_L4_PS_PS_NDP_Songs/src/main/res/layout/activity_main.xml" value="0.20380434782608695" />
+        <entry key="..\:/C346/Workspace/P01/Android-Projects/C347_L4_PS_PS_NDP_Songs/src/main/res/layout/activity_modify.xml" value="0.20380434782608695" />
+        <entry key="..\:/C346/Workspace/P01/Android-Projects/C347_L4_PS_PS_NDP_Songs/src/main/res/layout/activity_show.xml" value="0.20380434782608695" />
+        <entry key="..\:/C346/Workspace/P01/Android-Projects/C347_L4_PS_PS_NDP_Songs/src/main/res/layout/row.xml" value="0.2115036231884058" />
         <entry key="..\:/C346/Workspace/P01/Android-Projects/c347_l1_ex2demo_imageview/src/main/res/layout/activity_main.xml" value="0.35260416666666666" />
       </map>
     </option>
   </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK" />
 </project>

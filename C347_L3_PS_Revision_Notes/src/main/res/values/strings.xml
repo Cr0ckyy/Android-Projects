@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">C347_L3_PS_Revision_Notes</string>
+    <string name="revision_note">Revision Note</string>
+    <string name="stars">Stars</string>
+    <string name="five">5</string>
+    <string name="four">4</string>
+    <string name="three">3</string>
+    <string name="two">2</string>
+    <string name="one">1</string>
+    <string name="show_list">Show List</string>
+    <string name="insert">Insert</string>
+    <string name="title_activity_main">MainActivity - Insert</string>
+    <string name="title_activity_second">SecondActivity - Select</string>
+    <string name="title_activity_show">showActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="title_activity_modify">ModifyActivity</string>
+    <string name="update">update</string>
+    <string name="delete">delete</string>
+    <string name="cancel">Cancel</string>
+</resources>
