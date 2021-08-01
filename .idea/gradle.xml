@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="testRunner" value="GRADLE" />
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleHome" value="$USER_HOME$/Downloads/gradle-6.5-bin/gradle-6.5" />
+        <option name="gradleJvm" value="#JAVA_HOME" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/C347_L1_PS_SGHolidays" />
+            <option value="$PROJECT_DIR$/C347_L2_EX2_Demo_Explicit_Intent" />
+            <option value="$PROJECT_DIR$/buyer" />
+            <option value="$PROJECT_DIR$/c347_l1_ex1demolistview" />
+            <option value="$PROJECT_DIR$/c347_l1_ex2demo_imageview" />
+            <option value="$PROJECT_DIR$/c347_l2_ex2_demo_implicit_intent" />
+            <option value="$PROJECT_DIR$/common" />
+            <option value="$PROJECT_DIR$/myapplicationtest" />
+            <option value="$PROJECT_DIR$/myapplicationtest2" />
+            <option value="$PROJECT_DIR$/seller" />
+          </set>
+        </option>
+        <option name="resolveModulePerSourceSet" value="false" />
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>
