@@ -1,3 +1,8 @@
 include ':buyer', ':seller', ':common'
 include ':myapplicationtest'
 include ':myapplicationtest2'
+include ':c347_l1_ex1demolistview'
+include ':c347_l1_ex2demo_imageview'
+include ':C347_L1_PS_SGHolidays'
+include ':C347_L2_EX2_Demo_Explicit_Intent'
+include ':c347_l2_ex2_demo_implicit_intent'
