@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.myapplicationdev.android.c347_l9_ex1_demo_locationdetection">
+    package="com.myapplicationdev.android.c347_l9_ex2_demo_filereadwriting">
 
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -16,12 +15,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidProjects"
         tools:ignore="AllowBackup">
-
-
-        <!--TODO: meta-data is placed inside of the application-->
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyCNOQxgZ341kOqIOw3qG6sXRtWQBOWoye8" />
 
         <activity android:name=".MainActivity">
             <intent-filter>
