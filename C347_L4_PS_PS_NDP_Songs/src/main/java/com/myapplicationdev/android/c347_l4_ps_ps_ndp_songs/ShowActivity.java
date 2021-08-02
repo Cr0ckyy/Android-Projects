@@ -38,10 +38,10 @@ public class ShowActivity extends AppCompatActivity implements AdapterView.OnIte
         aa = new SongAdapter(this, R.layout.row, al);
         lv.setAdapter(aa);
 
-        lv.setOnItemClickListener((parent, view, position, identity) -> {
+        lv.setOnItemClickListener((AdapterView<?> parent, View view, int position, long identity) -> {
             Song song = al.get(position);
             Intent i = new Intent(ShowActivity.this,
-                  ModifyActivity.class);
+                    ModifyActivity.class);
             i.putExtra("song", song);
             startActivityForResult(i, 9);
         });
