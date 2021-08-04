@@ -1,0 +1,30 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!--   To request that an item to appear directly in the action bar as an action button-->
+    <!--    (i.e. action items that are not hidden inside the overflow), include showAsAction="ifRoom" -->
+    <!--    in the <item> tag as below.8.  To request that an item to appear directly -->
+    <!--    in the action bar as an action button (i.e. action items that are not hidden inside the overflow),-->
+    <!--    include showAsAction="ifRoom" in the <item> tag as below.-->
+    <item
+        android:id="@+id/action_search"
+        android:icon="@android:drawable/ic_menu_search"
+        android:title="Search"
+        app:showAsAction="withText|ifRoom" />
+    <item
+        android:id="@+id/action_compose"
+        android:icon="@android:drawable/ic_menu_edit"
+        android:title="Edit"
+        app:showAsAction="withText|ifRoom" />
+    <item
+        android:id="@+id/action_call"
+        android:icon="@android:drawable/ic_menu_call"
+        android:title="Call"
+        app:showAsAction="withText|always" />
+    <item
+        android:id="@+id/action_delete"
+        android:icon="@android:drawable/ic_menu_delete"
+        android:title="Delete"
+        app:showAsAction="withText|always" />
+</menu>
+

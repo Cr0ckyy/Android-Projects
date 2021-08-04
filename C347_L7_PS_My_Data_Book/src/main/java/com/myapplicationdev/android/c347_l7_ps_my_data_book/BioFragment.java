@@ -27,13 +27,13 @@ import java.util.Objects;
 
 
 public class BioFragment extends Fragment {
-     static final int MODE_PRIVATE = 0;
+    static final int MODE_PRIVATE = 0;
     ActionBar ab;
     Button btnFragBio;
-     DrawerLayout drawerLayout;
-     ActionBarDrawerToggle drawerToggle;
+    DrawerLayout drawerLayout;
+    ActionBarDrawerToggle drawerToggle;
     TextView tvShow;
-     SharedPreferences savedText;
+    SharedPreferences savedText;
 
     @SuppressLint("WrongConstant")
     @Override

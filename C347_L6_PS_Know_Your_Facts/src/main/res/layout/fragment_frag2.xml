@@ -1,0 +1,44 @@
+c<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+
+    tools:context=".Frag2">
+
+    <!-- Todo by Jun Kai -->
+
+    <LinearLayout
+        android:id="@+id/frag2LinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ostriches can run faster than horses" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Push into the crocodile's eyeballs to let you go" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Fleas can jump up to 200 times their height, equivalent to man jumping the Empire State Building" />
+
+        <Button
+            android:id="@+id/btnColor1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Change Color" />
+    </LinearLayout>
+
+</FrameLayout>
+

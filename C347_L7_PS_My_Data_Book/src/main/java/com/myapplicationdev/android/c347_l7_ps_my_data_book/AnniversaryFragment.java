@@ -60,7 +60,6 @@ public class AnniversaryFragment extends Fragment {
 
             // Get the layout inflater
             LayoutInflater inflater1 = requireActivity().getLayoutInflater();
-            View view2 = inflater1.inflate(R.layout.customalert3, null);
 
             // Inflate and set the layout for the dialog
             // Pass null as the parent view because its going in the dialog layout
