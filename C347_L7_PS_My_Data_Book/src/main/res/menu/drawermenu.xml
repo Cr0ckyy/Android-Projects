@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/bio" android:icon="@android:drawable/ic_menu_info_details"
+            android:title="Bio" />
+        <item android:id="@+id/vaccination" android:icon="@android:drawable/ic_menu_edit"
+            android:title="Vaccination" />
+        <item android:id="@+id/anniversary" android:icon="@android:drawable/ic_menu_my_calendar"
+            android:title="Anniversary" />
+        <item android:id="@+id/about" android:icon="@android:drawable/star_big_on"
+            android:title="About Us" />
+    </group>
+</menu>
