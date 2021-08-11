@@ -1,35 +1,45 @@
-package com.myapplicationdev.android.c347_l10_ps_enhanced_getting_my_location;
+package com.myapplicationdev.android.c347_l10_ex2_demo_music_player;
 
 import android.app.Service;
 import android.content.Intent;
 import android.media.MediaPlayer;
+import android.nfc.Tag;
 import android.os.Environment;
 import android.os.IBinder;
+import android.util.Log;
 
 import java.io.File;
 
 public class MusicService extends Service {
-    MediaPlayer player = new MediaPlayer();
 
-    public MusicService() {
-    }
+    // declaring object of MediaPlayer
+    MediaPlayer player = new MediaPlayer();
+    boolean started;
+    static final String TAG = "MusicService";
 
     @Override
     public IBinder onBind(Intent intent) {
         // TODO: Return the communication channel to the service.
-        throw new UnsupportedOperationException("Not yet implemented");
+        return null;
     }
 
     @Override
     // execution of service will start on calling this method
     public int onStartCommand(Intent intent, int flags, int startId) {
+
+        if (!started) {
+            started = true;
+            Log.d(TAG, "Service started");
+        } else {
+            Log.d(TAG, "Service is still running");
+        }
+
         try {
             File file = new File(
                     Environment
                             .getExternalStorageDirectory()
                             .getAbsolutePath() + "/MyFolder",
                     "Something Happened on the Way to Heaven.mp3");
-
 
             // specify the path of the audio file
             player.setDataSource(file.getPath());
@@ -47,6 +57,7 @@ public class MusicService extends Service {
 
         // returns the status of the program
         return START_STICKY;
+
     }
 
     @Override
@@ -56,5 +67,8 @@ public class MusicService extends Service {
 
         // stopping the process
         player.stop();
+
+        Log.d(TAG, "Service exited");
     }
+
 }

@@ -6,10 +6,10 @@ import android.os.Binder;
 import android.os.IBinder;
 import android.util.Log;
 
-
 public class MyService extends Service {
 
     boolean started;
+    final DownloadBinder mBinder = new DownloadBinder();
 
     @Override
     public IBinder onBind(Intent intent) {
@@ -28,9 +28,8 @@ public class MyService extends Service {
         if (!started) {
             started = true;
             Log.d("MyService", "Service started");
-        } else {
+        } else
             Log.d("MyService", "Service is still running");
-        }
         return super.onStartCommand(intent, flags, startId);
     }
 
@@ -39,8 +38,6 @@ public class MyService extends Service {
         Log.d("MyService", "Service exited");
         super.onDestroy();
     }
-
-    private final DownloadBinder mBinder = new DownloadBinder();
 
     static class DownloadBinder extends Binder {
         public void startDownload() {
@@ -51,6 +48,4 @@ public class MyService extends Service {
             Log.d("MyService", "getProgress executed");
         }
     }
-
-
 }

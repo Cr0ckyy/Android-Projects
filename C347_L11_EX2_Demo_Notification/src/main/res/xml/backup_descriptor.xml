@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<full-backup-content>
+    <!-- TODO Remove the following "exclude" elements to make them a part of the auto backup -->
+    <exclude
+        domain="database"
+        path="songs.db" />
+    <exclude
+        domain="database"
+        path="simplenotes.db" />
+    <exclude
+        domain="database"
+        path="tasks.db" />
+    <exclude
+        domain="database"
+        path="Star" />
+    <!-- Exclude the shared preferences file that contains the GCM registrationId -->
+    <exclude
+        domain="sharedpref"
+        path="savedText.xml" />
+    <exclude
+        domain="sharedpref"
+        path="hi.xml" />
+    <exclude
+        domain="sharedpref"
+        path="savedText3.xml" />
+    <exclude
+        domain="sharedpref"
+        path="savedText2.xml" />
+</full-backup-content>

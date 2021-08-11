@@ -33,11 +33,11 @@
         android:theme="@style/Theme.AndroidProjects"
         tools:ignore="AllowBackup">
         <service
-            android:name=".DetectorService"
+            android:name=".MusicService"
             android:enabled="true"
             android:exported="false" />
         <service
-            android:name=".MusicService"
+            android:name=".LocationService"
             android:enabled="true"
             android:exported="false" />
 
@@ -54,7 +54,9 @@
         <activity android:name=".RecordsActivity" />
 
 
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            tools:ignore="IntentFilterExportedReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

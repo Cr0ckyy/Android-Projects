@@ -1,13 +1,17 @@
 package com.myapplicationdev.android.c347_l11_ex2_demo_notification;
 
+import android.annotation.SuppressLint;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,18 +21,19 @@ public class MainActivity extends AppCompatActivity {
 
     int requestCode = 123;
     int notificationID = 888;
-    Button btnNotify1, btnNotify2, btnNotify3;
+    Button buttonNotify1, buttonNotify2, buttonNotify3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btnNotify1 = findViewById(R.id.btnNotify1);
-        btnNotify2 = findViewById(R.id.btnNotify2);
-        btnNotify3 = findViewById(R.id.btnNotify3);
+        buttonNotify1 = findViewById(R.id.buttonNotify1);
+        buttonNotify2 = findViewById(R.id.buttonNotify2);
+        buttonNotify3 = findViewById(R.id.buttonNotify3);
 
-        btnNotify1.setOnClickListener(v -> {
+
+        buttonNotify1.setOnClickListener((View view) -> {
 
             NotificationManager notificationManager = (NotificationManager)
                     getSystemService(NOTIFICATION_SERVICE);
@@ -36,16 +41,17 @@ public class MainActivity extends AppCompatActivity {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 NotificationChannel channel = new
                         NotificationChannel("default", "Default Channel",
-                        NotificationManager.IMPORTANCE_DEFAULT);
+                        NotificationManager.IMPORTANCE_HIGH);
 
                 channel.setDescription("This is for default notification");
                 notificationManager.createNotificationChannel(channel);
             }
 
             Intent intent = new Intent(MainActivity.this, MainActivity.class);
-            PendingIntent pIntent = PendingIntent.getActivity
-                    (MainActivity.this, requestCode, intent,
-                            PendingIntent.FLAG_CANCEL_CURRENT);
+            @SuppressLint("UnspecifiedImmutableFlag") PendingIntent pendingIntent =
+                    PendingIntent.getActivity
+                            (MainActivity.this, requestCode, intent,
+                                    PendingIntent.FLAG_CANCEL_CURRENT);
 
             // Build notification
             NotificationCompat.Builder builder = new
@@ -53,34 +59,35 @@ public class MainActivity extends AppCompatActivity {
             builder.setContentTitle("Amazing Offer!");
             builder.setContentText("Subject");
             builder.setSmallIcon(android.R.drawable.btn_star_big_off);
-            builder.setContentIntent(pIntent);
+            builder.setContentIntent(pendingIntent);
             builder.setAutoCancel(true);
 
-            Notification n = builder.build();
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
+                Uri uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+                builder.setSound(uri);
+                builder.setPriority(Notification.PRIORITY_HIGH);
+            }
 
+            // TODO: This replaces the existing notification with the same ID
+            Notification notification = builder.build();
             // An integer good to have, for you to programmatically cancel it
-            notificationManager.notify(notificationID, n);
-
+            notificationManager.notify(notificationID, notification);
             finish();
         });
 
-
-        btnNotify2.setOnClickListener(v -> {
-
+        buttonNotify2.setOnClickListener((View view) -> {
             NotificationManager notificationManager = (NotificationManager)
                     getSystemService(NOTIFICATION_SERVICE);
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                NotificationChannel channel = new
-                        NotificationChannel("default", "Default Channel",
-                        NotificationManager.IMPORTANCE_DEFAULT);
+                NotificationChannel channel = new NotificationChannel("default", "Default Channel", NotificationManager.IMPORTANCE_DEFAULT);
 
                 channel.setDescription("This is for default notification");
                 notificationManager.createNotificationChannel(channel);
             }
 
             Intent intent = new Intent(MainActivity.this, MainActivity.class);
-            PendingIntent pIntent = PendingIntent.getActivity
+            @SuppressLint("UnspecifiedImmutableFlag") PendingIntent pendingIntent = PendingIntent.getActivity
                     (MainActivity.this, requestCode,
                             intent, PendingIntent.FLAG_CANCEL_CURRENT);
 
@@ -93,24 +100,21 @@ public class MainActivity extends AppCompatActivity {
             bigText.setSummaryText("Reflection Journal?");
 
             // Build notification
-            NotificationCompat.Builder builder = new
-                    NotificationCompat.Builder(MainActivity.this, "default");
+            NotificationCompat.Builder builder = new NotificationCompat.Builder(MainActivity.this, "default");
             builder.setContentTitle("Amazing Offer!");
             builder.setContentText("Subject");
             builder.setSmallIcon(android.R.drawable.btn_star_big_off);
-            builder.setContentIntent(pIntent);
+            builder.setContentIntent(pendingIntent);
             builder.setStyle(bigText);
             builder.setAutoCancel(true);
 
-            Notification n = builder.build();
-
-            // This replaces the existing notification with the same ID
-            notificationManager.notify(notificationID, n);
+            // TODO: This replaces the existing notification with the same ID
+            Notification notification = builder.build();
+            notificationManager.notify(notificationID, notification);
             finish();
         });
 
-
-        btnNotify3.setOnClickListener(v -> {
+        buttonNotify3.setOnClickListener((View v) -> {
 
             NotificationManager notificationManager = (NotificationManager)
                     getSystemService(NOTIFICATION_SERVICE);
@@ -125,9 +129,12 @@ public class MainActivity extends AppCompatActivity {
             }
 
             Intent intent = new Intent(MainActivity.this, MainActivity.class);
-            PendingIntent pIntent = PendingIntent.getActivity
-                    (MainActivity.this, requestCode,
-                            intent, PendingIntent.FLAG_CANCEL_CURRENT);
+            @SuppressLint("UnspecifiedImmutableFlag") PendingIntent pendingIntent =
+                    PendingIntent.getActivity
+                    (MainActivity.this,
+                            requestCode,
+                            intent,
+                            PendingIntent.FLAG_CANCEL_CURRENT);
 
             NotificationCompat.BigPictureStyle bigPicture = new NotificationCompat.BigPictureStyle();
             bigPicture.bigPicture(BitmapFactory.decodeResource(getResources(), R.drawable.sentosa)).build();
@@ -138,17 +145,14 @@ public class MainActivity extends AppCompatActivity {
             builder.setContentTitle("Welcome to Sentosa!");
             builder.setContentText("Singapore's premier island getaway");
             builder.setSmallIcon(android.R.drawable.btn_star_big_off);
-            builder.setContentIntent(pIntent);
+            builder.setContentIntent(pendingIntent);
             builder.setStyle(bigPicture);
             builder.setAutoCancel(true);
 
-            Notification n = builder.build();
-
-            // This replaces the existing notification with the same ID
-            notificationManager.notify(notificationID, n);
+            // TODO:  This replaces the existing notification with the same ID
+            Notification notification = builder.build();
+            notificationManager.notify(notificationID, notification);
             finish();
         });
-
-
     }
 }

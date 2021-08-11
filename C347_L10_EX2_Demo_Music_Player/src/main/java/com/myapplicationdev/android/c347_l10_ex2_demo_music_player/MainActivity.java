@@ -33,12 +33,12 @@ public class MainActivity extends AppCompatActivity {
 
         btnStart.setOnClickListener((View view) -> {
             // starting the service
-            startService(new Intent(MainActivity.this, MyService.class));
+            startService(new Intent(MainActivity.this, MusicService.class));
         });
 
         btnStop.setOnClickListener((View view) -> {
             // stopping the service
-            stopService(new Intent(MainActivity.this, MyService.class));
+            stopService(new Intent(MainActivity.this, MusicService.class));
         });
 
     }

@@ -13,9 +13,8 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity {
 
     Button btnStart, btnStop, btnBind, btnUnbind;
-
     MyService.DownloadBinder downloadBinder;
-    Intent i, bindIntent;
+    Intent intent, bindIntent;
 
     final ServiceConnection connection = new ServiceConnection() {
         @Override
@@ -43,14 +42,14 @@ public class MainActivity extends AppCompatActivity {
 
 
         btnStart.setOnClickListener((View v) -> {
-            i = new Intent(MainActivity.this, MyService.class);
-            startService(i);
+            intent = new Intent(MainActivity.this, MyService.class);
+            startService(intent);
         });
 
 
         btnStop.setOnClickListener((View v) -> {
-            i = new Intent(MainActivity.this, MyService.class);
-            stopService(i);
+            intent = new Intent(MainActivity.this, MyService.class);
+            stopService(intent);
         });
 
         btnBind.setOnClickListener((View v) -> {
@@ -58,9 +57,7 @@ public class MainActivity extends AppCompatActivity {
             bindService(bindIntent, connection, BIND_AUTO_CREATE);
         });
 
-        btnUnbind.setOnClickListener((View v) ->
-                unbindService(connection)
-        );
+        btnUnbind.setOnClickListener((View v) -> unbindService(connection));
 
 
     }

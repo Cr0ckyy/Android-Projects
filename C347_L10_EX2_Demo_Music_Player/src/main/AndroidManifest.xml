@@ -22,9 +22,10 @@
         tools:ignore="AllowBackup">
 
         <service
-            android:name=".MyService"
+            android:name=".MusicService"
             android:enabled="true"
-            android:exported="true" />
+            android:exported="true"
+            tools:ignore="ExportedService" />
 
         <activity
             android:name=".MainActivity"
