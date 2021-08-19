@@ -39,6 +39,8 @@ public class RecordsActivity extends AppCompatActivity {
         numberOfRecordsTextView = findViewById(R.id.noOfRecordsTextView);
 
         coordinates = new ArrayList<>();
+
+
         recordsAdapter = new ArrayAdapter<>(RecordsActivity.this,
                 android.R.layout.simple_list_item_1,
                 coordinates);

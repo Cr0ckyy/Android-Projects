@@ -35,7 +35,9 @@ public class ShowActivity extends AppCompatActivity implements AdapterView.OnIte
         al = new ArrayList<>();
         DBHelper db = new DBHelper(ShowActivity.this);
         al = db.getAllNotes();
-        aa = new SongAdapter(this, R.layout.row, al);
+        aa = new SongAdapter(
+                this, R.layout.row, al
+        );
         lv.setAdapter(aa);
 
         lv.setOnItemClickListener((AdapterView<?> parent, View view, int position, long identity) -> {

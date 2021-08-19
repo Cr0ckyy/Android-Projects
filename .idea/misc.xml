@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/C346/Workspace/P01/Android-Projects/C347_EX1_L1_Demo_ListView/src/main/res/layout/activity_main.xml" value="0.17831813576494426" />
         <entry key="..\:/C346/Workspace/P01/Android-Projects/C347_L10_EX1_Demo_Service/src/main/res/layout/activity_main.xml" value="0.2115036231884058" />
         <entry key="..\:/C346/Workspace/P01/Android-Projects/C347_L10_EX2_Demo_Music_Player/src/main/res/layout/activity_main.xml" value="0.2115036231884058" />
         <entry key="..\:/C346/Workspace/P01/Android-Projects/C347_L10_PS_Enhanced_Getting_My_Location/src/main/res/layout/activity_main.xml" value="0.45436893203883494" />
@@ -14,6 +15,13 @@
         <entry key="..\:/C346/Workspace/P01/Android-Projects/C347_L11_PS_Task_Manager/src/main/res/drawable/ic_launcher_background.xml" value="0.26851851851851855" />
         <entry key="..\:/C346/Workspace/P01/Android-Projects/C347_L11_PS_Task_Manager/src/main/res/layout/activity_add.xml" value="0.2115036231884058" />
         <entry key="..\:/C346/Workspace/P01/Android-Projects/C347_L11_PS_Task_Manager/src/main/res/layout/activity_main.xml" value="0.2115036231884058" />
+        <entry key="..\:/C346/Workspace/P01/Android-Projects/C347_L11_PS_Task_Manager2/src/main/res/layout/activity_add.xml" value="0.17831813576494426" />
+        <entry key="..\:/C346/Workspace/P01/Android-Projects/C347_L11_PS_Task_Manager2/src/main/res/layout/activity_main.xml" value="0.19021739130434784" />
+        <entry key="..\:/C346/Workspace/P01/Android-Projects/C347_L11_PS_Task_Manager2/src/main/res/layout/row.xml" value="0.17831813576494426" />
+        <entry key="..\:/C346/Workspace/P01/Android-Projects/C347_L1_PS_SGHolidays/src/main/res/layout/activity_holiday_list.xml" value="0.13541666666666666" />
+        <entry key="..\:/C346/Workspace/P01/Android-Projects/C347_L1_PS_SGHolidays/src/main/res/layout/activity_main.xml" value="0.17831813576494426" />
+        <entry key="..\:/C346/Workspace/P01/Android-Projects/C347_L2_EX2_Demo_Implicit_Intent/src/main/res/layout/activity_main.xml" value="0.21784420289855072" />
+        <entry key="..\:/C346/Workspace/P01/Android-Projects/C347_L2_PS_Class_Journal/src/main/res/layout/activity_add_data.xml" value="0.21784420289855072" />
         <entry key="..\:/C346/Workspace/P01/Android-Projects/C347_L3_EX1_Demo_Database/src/main/res/layout/activity_main.xml" value="0.20520833333333333" />
         <entry key="..\:/C346/Workspace/P01/Android-Projects/C347_L3_EX1_Demo_Database/src/main/res/layout/row.xml" value="0.7927631578947368" />
         <entry key="..\:/C346/Workspace/P01/Android-Projects/C347_L3_PS_Revision_Notes/src/main/res/layout/activity_main.xml" value="0.2115036231884058" />

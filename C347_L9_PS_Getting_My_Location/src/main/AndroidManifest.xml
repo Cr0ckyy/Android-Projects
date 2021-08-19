@@ -19,7 +19,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AndroidProjects">
+        android:theme="@style/Theme.AndroidProjects"
+        tools:ignore="AllowBackup">
 
         <!-- TODO: meta-data is placed inside of the application -->
         <meta-data

@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-
+ // LocationAdapter
 public class SongAdapter extends ArrayAdapter {
     Context context;
     ArrayList songs;
