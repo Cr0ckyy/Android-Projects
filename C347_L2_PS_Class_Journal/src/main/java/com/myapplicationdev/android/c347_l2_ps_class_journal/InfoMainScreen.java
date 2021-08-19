@@ -17,7 +17,7 @@ public class InfoMainScreen extends AppCompatActivity {
     Button btnRP, btnEmail,btnAdd;
     int requestCodeForC347 = 1;
     ListView lv;
-    sg.edu.rp.c346.id19020620.c347l02psteamwork.CustomAdapter aa;
+    CustomAdapter aa;
     ArrayList<Module> module;
     //---------------------Initial Setting--------------
 
@@ -38,7 +38,7 @@ public class InfoMainScreen extends AppCompatActivity {
 
         //Link this Activity object, the row.xml layout for each
         //row and the food String array together
-        aa = new sg.edu.rp.c346.id19020620.c347l02psteamwork.CustomAdapter(this, R.layout.row, module);
+        aa = new CustomAdapter(this, R.layout.row, module);
         lv.setAdapter(aa);
         //---------------------List View Implementation--------------
 

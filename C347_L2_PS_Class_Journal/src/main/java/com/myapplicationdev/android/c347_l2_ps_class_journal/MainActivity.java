@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String selectedModule = al.get(i);
-                Intent intent = new Intent(MainActivity.this, sg.edu.rp.c346.id19020620.c347l02psteamwork.InfoMainScreen.class);
+                Intent intent = new Intent(MainActivity.this, InfoMainScreen.class);
                 intent.putExtra("module",selectedModule);
                 startActivity(intent);
             }
