@@ -35,14 +35,15 @@ public class MainActivity extends AppCompatActivity {
 
         buttonNotify1.setOnClickListener((View view) -> {
 
+            // notificationManager alerts the user to events
             NotificationManager notificationManager = (NotificationManager)
                     getSystemService(NOTIFICATION_SERVICE);
 
+            // ensuring SDK version is greater than 0
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 NotificationChannel channel = new
                         NotificationChannel("default", "Default Channel",
                         NotificationManager.IMPORTANCE_HIGH);
-
                 channel.setDescription("This is for default notification");
                 notificationManager.createNotificationChannel(channel);
             }
