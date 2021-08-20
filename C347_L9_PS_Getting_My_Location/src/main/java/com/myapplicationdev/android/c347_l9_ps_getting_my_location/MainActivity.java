@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -40,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     GoogleMap map;
     Button btnGetLocationUpdate, btnRemoveLocationUpdate, btnCheckRecords;
     TextView tvLocation, tvLatitude, tvLongitude;
-    LatLng downtownCore;
+    LatLng downtownCoreCoordinates;
     LocationRequest mLocationRequest;
     LocationCallback mLocationCallback;
     Marker central;
@@ -60,12 +61,16 @@ public class MainActivity extends AppCompatActivity {
 
         // The primary point of contact with the fused location provider.
         FusedLocationProviderClient client = LocationServices.getFusedLocationProviderClient(this);
+
         // FragmentManager for interacting with fragments associated with this activity.
-        FragmentManager fm = getSupportFragmentManager();
+        FragmentManager supportFragmentManager = getSupportFragmentManager();
+
         // The SupportMapFragment is the simplest way to include a map in an application.
-        SupportMapFragment mapFragment = (SupportMapFragment) fm.findFragmentById(R.id.map);
+        SupportMapFragment mapFragment = (SupportMapFragment) supportFragmentManager.findFragmentById(R.id.map);
+
         // TODO: Folder creation
         String myFolderLocation = getFilesDir().getAbsolutePath() + "/Folder";
+
         // by converting the given pathname string into an abstract pathname,
         // a new File object is created.
         File myFolder = new File(myFolderLocation);
@@ -80,15 +85,20 @@ public class MainActivity extends AppCompatActivity {
         }
 
         assert mapFragment != null;
-        mapFragment.getMapAsync(googleMap -> {
+
+        // TODO: get the instance of the googleMap
+        mapFragment.getMapAsync((GoogleMap googleMap) -> {
+
             map = googleMap;
             map.setMapType(GoogleMap.MAP_TYPE_NORMAL);// sets the map type to be NORMAL
+
             checkPermission(); // checking permission
 
             //Returns the most recent location that is currently available in the form of a Task.
-            Task<Location> task = client.getLastLocation();
+            Task<Location> currentLocation = client.getLastLocation();
 
-            task.addOnSuccessListener(MainActivity.this, location -> {
+            // TODO: get the instance of the current Location
+            currentLocation.addOnSuccessListener(MainActivity.this, (Location location) -> {
 
                 if (location != null) {
 
@@ -97,26 +107,26 @@ public class MainActivity extends AppCompatActivity {
                     tvLongitude.setText(location.getLongitude() + "");
 
                     // an immutable object storing a pair of latitude and longitude coordinates as degrees
-                    downtownCore = new LatLng(location.getLatitude(), location.getLongitude());
+                    downtownCoreCoordinates = new LatLng(location.getLatitude(), location.getLongitude());
+
                     // A class that contains methods for creating CameraUpdate objects that change the camera on a map.
-                    map.moveCamera(CameraUpdateFactory.newLatLngZoom(downtownCore, 11));
+                    map.moveCamera(CameraUpdateFactory.newLatLngZoom(downtownCoreCoordinates, 11));
 
                     central = map.addMarker(new MarkerOptions()
-                            .position(downtownCore)
+                            .position(downtownCoreCoordinates)
                             .title("Last Location")
                             .snippet("user's last location")
                             .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED))
 
                     );
                 } else {
-                    String toastMsg = "No Last Known Location found";
+                    String toastMsg = "No Last Known Location is found";
                     Toast.makeText(MainActivity.this, toastMsg, Toast.LENGTH_SHORT).show();
-
                 }
             });
 
-            map.setOnMarkerClickListener(marker -> {
-
+            // once the map location's marker has been clicked
+            map.setOnMarkerClickListener((Marker marker) -> {
                 Toast.makeText(MainActivity.this, marker.getTitle(), Toast.LENGTH_SHORT).show();
                 return false;
             });
@@ -124,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
             // Gets the user interface settings for the map.
             UiSettings ui = map.getUiSettings();
 
-            ui.setCompassEnabled(true); // Enables  the compass. 
+            ui.setCompassEnabled(true); // Enables  the compass.
             ui.setZoomControlsEnabled(true); // Enables the zoom controls
 
             // Determine whether you have been granted a particular permission.
@@ -141,7 +151,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         });
-
+        // TODO: get location update information
         btnGetLocationUpdate.setOnClickListener(v -> {
             checkPermission();
 
@@ -165,9 +175,9 @@ public class MainActivity extends AppCompatActivity {
                     tvLocation.setText("Last Location:");
                     tvLatitude.setText(lat + "");
                     tvLongitude.setText(lng + "");
-                    downtownCore = new LatLng(lat, lng);
+                    downtownCoreCoordinates = new LatLng(lat, lng);
 
-                    map.moveCamera(CameraUpdateFactory.newLatLngZoom(downtownCore, 11));
+                    map.moveCamera(CameraUpdateFactory.newLatLngZoom(downtownCoreCoordinates, 11));
 
 
                     LatLng newloc = new LatLng(data.getLatitude(), data.getLongitude());
@@ -207,7 +217,7 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
-        btnRemoveLocationUpdate.setOnClickListener(v -> {
+        btnRemoveLocationUpdate.setOnClickListener((View v) -> {
             checkPermission();
             client.removeLocationUpdates(mLocationCallback);
             Toast.makeText(MainActivity.this,
@@ -215,7 +225,7 @@ public class MainActivity extends AppCompatActivity {
                     Toast.LENGTH_LONG).show();
         });
 
-        btnCheckRecords.setOnClickListener(v -> {
+        btnCheckRecords.setOnClickListener((View v) -> {
             Intent newIntent = new Intent(MainActivity.this, LocationListActivity.class);
             startActivity(newIntent);
             Toast.makeText(MainActivity.this,
@@ -226,21 +236,16 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private boolean checkPermission() {
-        int permissionCheck_Coarse = ContextCompat.checkSelfPermission(
+    private void checkPermission() {
+        ContextCompat.checkSelfPermission(
                 MainActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION);
-        int permissionCheck_Fine = ContextCompat.checkSelfPermission(
+        ContextCompat.checkSelfPermission(
                 MainActivity.this, Manifest.permission.ACCESS_FINE_LOCATION);
 
-        if (permissionCheck_Coarse == PermissionChecker.PERMISSION_GRANTED
-                || permissionCheck_Fine == PermissionChecker.PERMISSION_GRANTED) {
-            return true;
-        } else {
-            ActivityCompat.requestPermissions(MainActivity.this,
-                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 0);
-            ActivityCompat.requestPermissions(MainActivity.this,
-                    new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
-            return false;
-        }
+        ActivityCompat.requestPermissions(MainActivity.this,
+                new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 0);
+        ActivityCompat.requestPermissions(MainActivity.this,
+                new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
+
     }
 }

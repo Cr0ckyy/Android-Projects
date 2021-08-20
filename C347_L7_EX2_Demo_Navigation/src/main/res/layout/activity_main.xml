@@ -11,7 +11,8 @@
         android:id="@+id/btnNewActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Activity" />
+        android:text="New Activity"
+        tools:ignore="HardcodedText" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
@@ -19,8 +20,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
         android:layout_margin="16dp"
-        android:contentDescription="TODO"
-        android:src="@android:drawable/ic_input_add" />
+        android:src="@android:drawable/ic_input_add"
+        tools:ignore="ContentDescription" />
 
 </LinearLayout>
 

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#7A04EB"
+    android:background="#002366"
     android:orientation="vertical"
     android:padding="10dp"
     tools:context=".Frag1">
@@ -14,7 +14,8 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:text="Fragment 1"
-        android:textColor="#FFFFFF" />
+        android:textColor="#FFFFFF"
+        tools:ignore="HardcodedText" />
 
 </LinearLayout>
 

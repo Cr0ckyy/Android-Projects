@@ -14,8 +14,9 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     // TODO : In the same way that ListView requires relevant components,
-    ArrayList<Fragment> al;
+    ArrayList<Fragment> fragments;
     MyFragmentPagerAdapter myFragmentPagerAdapter;
+    FragmentManager fragmentManager;
     ViewPager viewPager;
     Button btnBack, btnNext;
 
@@ -30,14 +31,16 @@ public class MainActivity extends AppCompatActivity {
 
 
         // TODO : Create an ArrayList collection of Fragments.
-        al = new ArrayList<>();
-        al.add(new Frag1());
-        al.add(new Frag2());
+        fragments = new ArrayList<>();
+        fragments.add(new Frag1());
+        fragments.add(new Frag2());
 
         // TODO : Pass the FragmentManager and the collection of Fragments to the Adapter.
-        FragmentManager fm = getSupportFragmentManager();
-        myFragmentPagerAdapter = new MyFragmentPagerAdapter(fm, al);
+        fragmentManager = getSupportFragmentManager();
+        // set fragments and fragmentManager into the MyFragmentPagerAdapter
+        myFragmentPagerAdapter = new MyFragmentPagerAdapter(fragmentManager, fragments);
         viewPager.setAdapter(myFragmentPagerAdapter);
+
 
         btnBack.setOnClickListener((View v) -> {
             if (viewPager.getCurrentItem() > 0) {
@@ -53,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
                 viewPager.setCurrentItem(nextPage, true);
             }
         });
+
 
     }
 

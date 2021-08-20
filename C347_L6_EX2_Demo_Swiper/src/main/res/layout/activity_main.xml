@@ -4,24 +4,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="10dp"
+    android:padding="20dp"
     tools:context=".MainActivity">
 
     <!-- TODO: 1.Place a ViewPager component in layout file.-->
 
 
     <!--TODO: ViewPager allows us to create screen slide
-     that lets user swipe left or right to move  between screens-->
-    <!--  TODO:Each screen is actually a fragment-->
-    <!--  TODO: May swipe left or right programmatically-->
+         lets user swipe left or right to move  between screens
+         Each screen is actually a fragment
+         May swipe left or right programmatically-->
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewpager1"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:background="#808080" />
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:orientation="horizontal"
@@ -29,19 +30,24 @@
 
         <Button
             android:id="@+id/btnBack"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            android:layout_marginRight="10dp"
+            android:layout_margin="10dp"
             android:layout_weight="1"
-            android:text="Back" />
+            android:text="Back"
+            tools:ignore="HardcodedText" />
 
         <Button
+            android:layout_margin="10dp"
             android:id="@+id/btnNext"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Next" />
+            android:text="Next"
+            tools:ignore="HardcodedText" />
+
     </LinearLayout>
 
 

@@ -3,23 +3,29 @@ package com.myapplicationdev.android.c347_l9_ps_getting_my_location;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 
 public class LocationListActivity extends AppCompatActivity {
 
+    ArrayAdapter<String> adapter;
     Button btnRefresh;
     TextView tvRecords;
     ListView lvLocations;
+    StringBuilder dataLines;
+    String myFolderLocation, line;
+    File folder;
+    FileReader reader;
+    BufferedReader bufferedReader;
+    String[] dataLinesArray;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -31,75 +37,86 @@ public class LocationListActivity extends AppCompatActivity {
         lvLocations = findViewById(R.id.lvLocations);
         btnRefresh = findViewById(R.id.btnRefresh);
 
+        // TODO: Folders creation
+        myFolderLocation = getFilesDir().getAbsolutePath() + "/Folder";
+        folder = new File(myFolderLocation);
 
-        String myFolderLocation1 = getFilesDir().getAbsolutePath() + "/Folder";
-        File file = new File(myFolderLocation1, "location.txt");
+        // TODO: See whether file/directory specified by this abstract pathname exists.
+        if (folder.exists()) {
 
-        if (file.exists()) {
-            StringBuilder data = new StringBuilder();
+            // A mutable character sequence object.
+            dataLines = new StringBuilder();
 
             try {
 
-                FileReader reader = new FileReader(file);
-                BufferedReader br = new BufferedReader(reader);
-                String line = br.readLine();
+                reader = new FileReader(folder);
+                bufferedReader = new BufferedReader(reader);
+
+                // A BufferedReader object that reads a single line of text.
+                line = bufferedReader.readLine();
 
                 while (line != null) {
-                    data.append(line).append("\n");
-                    line = br.readLine();
+                    dataLines.append(line).append("\n");
+                    line = bufferedReader.readLine();
                 }
 
-                String[] array = data.toString().split("\n");
-                ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
-                        android.R.layout.simple_list_item_1, android.R.id.text1, array);
+                dataLinesArray = dataLines.toString().split("\n");
+                adapter = new ArrayAdapter<>(this,
+                        android.R.layout.simple_list_item_1, android.R.id.text1, dataLinesArray);
 
                 lvLocations.setAdapter(adapter);
-                tvRecords.setText("Number of Records: " + array.length);
+                tvRecords.setText("Number of Records: " + dataLinesArray.length);
 
-                br.close();
+                bufferedReader.close();
                 reader.close();
             } catch (Exception e) {
 
                 Toast.makeText(LocationListActivity.this, "Failed to read!", Toast.LENGTH_LONG).show();
                 e.printStackTrace();
             }
-            Log.d("Content", data.toString());
+            Log.d("Content", dataLines.toString());
+        } else {
+            Log.d("Content", "The file is already existed");
         }
 
-        btnRefresh.setOnClickListener(v -> {
-            String myFolderLocation2 = getFilesDir().getAbsolutePath() + "/Folder";
-            File file2 = new File(myFolderLocation2, "location.txt");
+        // TODO: Refresh line data
+        btnRefresh.setOnClickListener((View v) -> {
 
-            if (file2.exists()) {
-                StringBuilder data = new StringBuilder();
+            myFolderLocation = getFilesDir().getAbsolutePath() + "/Folder";
+            folder = new File(myFolderLocation, "location.txt");
+
+            if (folder.exists()) {
+                dataLines = new StringBuilder();
 
                 try {
-                    FileReader reader = new FileReader(file2);
-                    BufferedReader br = new BufferedReader(reader);
+                    reader = new FileReader(folder);
+                    bufferedReader = new BufferedReader(reader);
 
-                    String line = br.readLine();
+                    line = bufferedReader.readLine();
 
+                    // adding lines into data
                     while (line != null) {
-                        data.append(line).append("\n");
-                        line = br.readLine();
+                        dataLines.append(line).append("\n");
+                        line = bufferedReader.readLine();
                     }
 
                     // Split the data after it has been added by adding a new line.
-                    String[] array = data.toString().split("\n");
-                    ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplicationContext(),
-                            android.R.layout.simple_list_item_1, android.R.id.text1, array);
+                    dataLinesArray = dataLines.toString().split("\n");
+                    adapter = new ArrayAdapter<>(getApplicationContext(),
+                            android.R.layout.simple_list_item_1, android.R.id.text1, dataLinesArray);
 
                     lvLocations.setAdapter(adapter);
-                    tvRecords.setText("Number of Records: " + array.length);
+                    tvRecords.setText("Number of Records: " + dataLinesArray.length);
 
-                    br.close();
+                    // Closes the stream and releases any associated system resources
+                    bufferedReader.close();
                     reader.close();
 
                 } catch (Exception e) {
                     Toast.makeText(LocationListActivity.this, "Failed to read!", Toast.LENGTH_LONG).show();
                     e.printStackTrace();
                 }
-                Log.d("Content", data.toString());
+                Log.d("Content", dataLines.toString());
             }
 
             Toast.makeText(LocationListActivity.this,

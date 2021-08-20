@@ -1,61 +1,45 @@
 package com.myapplicationdev.android.c347_l6_ps_know_your_facts;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.viewpager.widget.ViewPager;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Random;
 
-// TODO: Done by Shufang
 public class MainActivity extends AppCompatActivity {
-
-    // TODO: Declaring objects
     ArrayList<Fragment> al;
     MyFragmentPagerAdapter adapter;
-    ViewPager viewPager;
-    Button btnReadLater;
-
+    ViewPager vPager;
+    Button btnCloseActivity;
+    private SharedPreferences savedIndex;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // TODO: Initalizing objects
-        viewPager = findViewById(R.id.viewpager1);
-        btnReadLater = findViewById(R.id.btnBack);
+        vPager = findViewById(R.id.viewpager);
+        btnCloseActivity = findViewById(R.id.buttonLater);
 
         FragmentManager fm = getSupportFragmentManager();
-
         al = new ArrayList<>();
-        al.add(new Frag1());
-        al.add(new Frag2());
-        al.add(new Frag3());
-
+        al.add(new Fragment1());
+        al.add(new Fragment2());
+        al.add(new Fragment3());
 
         adapter = new MyFragmentPagerAdapter(fm, al);
 
-        viewPager.setAdapter(adapter);
+        vPager.setAdapter(adapter);
 
-
-        btnReadLater.setOnClickListener(view -> {
-            finish();
-
-
-            Calendar cal = Calendar.getInstance();
-            cal.add(Calendar.SECOND, 300);
-
-
-        });
+        btnCloseActivity.setOnClickListener(v -> finish());
     }
 
     @Override
@@ -64,41 +48,43 @@ public class MainActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Random randomPageNo = new Random();
+        int id = item.getItemId();
+        if (id == R.id.action_next) {
+            int max = vPager.getChildCount();
+            if (vPager.getCurrentItem() < max - 1) {
+                vPager.setCurrentItem(vPager.getCurrentItem() + 1, true);
+            }
+        } else if (id == R.id.action_previous) {
+            if (vPager.getCurrentItem() > 0) {
+                int previousPage = vPager.getCurrentItem() - 1;
+                vPager.setCurrentItem(previousPage, true);
+            }
+
+        } else if (id == R.id.action_random) {
+            int randomPage = randomPageNo.nextInt(vPager.getChildCount());
+            System.out.println(randomPage);
+            vPager.setCurrentItem(randomPage, true);
+
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 
     @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+    protected void onPause() {
+        SharedPreferences.Editor editor = savedIndex.edit();
+        editor.putInt("savedIndex", vPager.getCurrentItem());
+        editor.apply();
+        super.onPause();
+    }
 
-        int itemId = item.getItemId();
-        final int nextId = R.id.action_next;
-        final int previousId = R.id.action_previous;
-        final int randomId = R.id.action_random;
-
-        switch (itemId) {
-
-            case nextId:
-                int max = viewPager.getChildCount();
-                if (viewPager.getCurrentItem() < max - 1) {
-                    int nextPage = viewPager.getCurrentItem() + 1;
-                    viewPager.setCurrentItem(nextPage, true);
-
-                }
-                return true;
-
-            case previousId:
-                if (viewPager.getCurrentItem() > 0) {
-                    int previousPage = viewPager.getCurrentItem() - 1;
-                    viewPager.setCurrentItem(previousPage, true);
-                }
-                return true;
-
-            case randomId:
-                Random random = new Random();
-                viewPager.setCurrentItem(random.nextInt(3), true);
-                return true;
-
-            default:
-                return super.onOptionsItemSelected(item);
-        }
+    @Override
+    protected void onResume() {
+        savedIndex = getSharedPreferences("savedIndex", MODE_PRIVATE);
+        vPager.setCurrentItem(savedIndex.getInt("savedIndex", 0));
+        super.onResume();
     }
 }
-

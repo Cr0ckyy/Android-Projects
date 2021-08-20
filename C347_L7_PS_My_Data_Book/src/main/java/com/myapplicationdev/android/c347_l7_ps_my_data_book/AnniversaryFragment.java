@@ -34,7 +34,7 @@ public class AnniversaryFragment extends Fragment {
     TextView tvShow;
     SharedPreferences savedText;
 
-    @SuppressLint("WrongConstant")
+    @SuppressLint({"WrongConstant", "InflateParams"})
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

@@ -23,7 +23,7 @@ import com.google.android.gms.tasks.Task;
 public class MainActivity extends AppCompatActivity {
 
     Button btnGetLastLocation, btnGetLocationUpdate, btnRemoveLocationUpdates;
-    FusedLocationProviderClient client;
+    FusedLocationProviderClient locationClient;
     LocationCallback locationCallback;
     LocationRequest locationRequest;
 
@@ -36,8 +36,8 @@ public class MainActivity extends AppCompatActivity {
         btnGetLocationUpdate = findViewById(R.id.btnGetLocationUpdate);
         btnRemoveLocationUpdates = findViewById(R.id.btnRemoveLocationUpdate);
 
-        // Create a new instance of FusedLocationProviderClient for use in an Activity.
-        client = LocationServices.getFusedLocationProviderClient(this);
+        // the main entry point for location services integration
+        locationClient = LocationServices.getFusedLocationProviderClient(this);
 
         // if permission is not granted
         if (!checkPermission()) {
@@ -47,28 +47,24 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
-        // Used to receive API notifications when the device's location has changed or cannot be determined.
+        // TODO: used to receive API notifications when the device's location has changed/cannot be determined.
         locationCallback = new LocationCallback() {
             @Override
             public void onLocationResult(@NonNull LocationResult locationResult) {
 
-                /*TODO: Assertions should be used to check for something that should never happen,
-           whereas exceptions (try-catch statement) should be used to check for something that could happen.*/
-                //  assert locationResult != null;
-
-                // Returns the most recent location found in this result, or null if no locations were found.
-                Location resultLastLocation = locationResult.getLastLocation();
+                // Returns the most recent location found in this result
+                Location currentLocation = locationResult.getLastLocation();
 
                 String toastMsg = String.format("New Location found:\nLatitude: %s\nLongitude: %s"
-                        , resultLastLocation.getLatitude(), resultLastLocation.getLongitude());
+                        , currentLocation.getLatitude(), currentLocation.getLongitude());
                 Toast.makeText(MainActivity.this, toastMsg, Toast.LENGTH_SHORT).show();
             }
         };
 
-        // get an update on the location
+        // TODO: get an update on the location
         btnGetLocationUpdate.setOnClickListener((View view) -> {
 
-            // TODO: Runtime permission check
+            // Runtime permission check
             if (checkPermission()) {
 
                 // Begin the detection process by requesting a service quality
@@ -78,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
                 locationRequest.setInterval(10000); // Set the millisecond interval for active location updates.
                 locationRequest.setFastestInterval(5000); // Set the fastest interval for location updates explicitly in milliseconds.
                 locationRequest.setSmallestDisplacement(100); // Set the minimum distance in meters between location updates.
-                client.requestLocationUpdates(locationRequest, locationCallback, null);
+                locationClient.requestLocationUpdates(locationRequest, locationCallback, null);
 
             } else {
                 String toastMsg = "Location information cannot be retrieved because permission has not been granted.";
@@ -95,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
         btnRemoveLocationUpdates.setOnClickListener((View view) -> {
 
             // All location updates for the given location result listener are removed.
-            client.removeLocationUpdates(locationCallback);
+            locationClient.removeLocationUpdates(locationCallback);
 
             String toastMsg = "Location updates were successfully removed.";
             Toast.makeText(MainActivity.this, toastMsg, Toast.LENGTH_SHORT).show();
@@ -106,23 +102,23 @@ public class MainActivity extends AppCompatActivity {
             if (checkPermission()) {
 
                 // Returns the most recent location that is currently available.
-                Task<Location> task = client.getLastLocation();
+                Task<Location> currentLocation = locationClient.getLastLocation();
 
                 // Represents an asynchronous operation
-                task.addOnSuccessListener(MainActivity.this, location -> {
+                currentLocation.addOnSuccessListener(MainActivity.this, (Location location) -> {
 
                     String toastMsg;
                     if (location != null) {
                         toastMsg = String.format("Last Location found\nLatitude: %s\nLongitude: %s"
                                 , location.getLatitude(), location.getLongitude());
                     } else {
-                        toastMsg = "No last known location found";
+                        toastMsg = "No last known location found.";
                     }
                     Toast.makeText(MainActivity.this, toastMsg, Toast.LENGTH_SHORT).show();
                 });
 
             } else {
-                String toastMsg = "Permission not granted to retrieve location info";
+                String toastMsg = "Permission not granted to retrieve location info.";
                 Toast.makeText(MainActivity.this, toastMsg, Toast.LENGTH_SHORT).show();
                 ActivityCompat.requestPermissions(MainActivity.this,
                         new String[]{Manifest.permission.ACCESS_FINE_LOCATION,

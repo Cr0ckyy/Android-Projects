@@ -13,6 +13,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
+
+    // TODO: Initialize the contents of the Activity's standard options menu.
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
@@ -20,5 +22,6 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
+
 }
 

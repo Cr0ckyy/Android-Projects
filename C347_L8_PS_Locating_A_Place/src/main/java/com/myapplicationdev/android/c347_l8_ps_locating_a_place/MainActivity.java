@@ -38,20 +38,20 @@ public class MainActivity extends AppCompatActivity {
         /* TODO: You can use this adapter to provide views for an AdapterView.
             Returns a view for each object in a collection of data objects you provide,
             and can be used with list-based user interface widgets such as ListView or Spinner*/
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+        ArrayAdapter<CharSequence> spinnerAdapter = ArrayAdapter.createFromResource(this,
                 R.array.branches, android.R.layout.simple_spinner_item);
 
         // Sets the layout resource to create the drop down views.
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         // Sets the SpinnerAdapter used to provide the data which backs this Spinner.
-        spinner.setAdapter(adapter);
+        spinner.setAdapter(spinnerAdapter);
 
         // Interface for interacting with Fragment objects inside of an Activity
-        FragmentManager fm = getSupportFragmentManager();
+        FragmentManager fragmentManager = getSupportFragmentManager();
 
         // An app's Map component. This is the simplest approach to include a map in an application.
-        SupportMapFragment mapFragment = (SupportMapFragment) fm.findFragmentById(R.id.map);
+        SupportMapFragment mapFragment = (SupportMapFragment) fragmentManager.findFragmentById(R.id.map);
 
         // An assertion allows testing the correctness of any assumptions that have been made in the program.
         assert mapFragment != null;
@@ -64,47 +64,47 @@ public class MainActivity extends AppCompatActivity {
         mapFragment.getMapAsync(googleMap -> {
             map = googleMap;
 
-            assert map != null;
-
             // Sets the map's type to Basic map.
             map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 
 
             /* TODO:Objects that are immutable and represent a pair of
                  latitude and longitude coordinates saved as degrees.*/
-            LatLng downtownCore = new LatLng(1.295416599631411, 103.86085283827651);
-            LatLng serangoon = new LatLng(1.3510765477411812, 103.87012575316815);
-            LatLng eastCoast = new LatLng(1.3089197404107595, 103.905462077644);
-            LatLng singapore = new LatLng(1.3521, 103.8198);
+            LatLng downtownCoreCoordinates = new LatLng(1.295416599631411, 103.86085283827651);
+            LatLng SerangoonCoordinates = new LatLng(1.3510765477411812, 103.87012575316815);
+            LatLng EastCoastCoordinates = new LatLng(1.3089197404107595, 103.905462077644);
+            LatLng SingaporeCoordinates = new LatLng(1.3521, 103.8198);
 
 
             //TODO: Objects provide methods for building CameraUpdate objects, which change the camera on a map.
-            map.moveCamera(CameraUpdateFactory.newLatLngZoom(singapore, 11));
+            map.moveCamera(CameraUpdateFactory.newLatLngZoom(SingaporeCoordinates, 11));
 
             /* TODO: Icon objects that are placed at specific points on the map's surface. */
-            Marker central = map.addMarker(new MarkerOptions()
-                    .position(downtownCore)
+            MarkerOptions central = new MarkerOptions()
+                    .position(downtownCoreCoordinates)
                     .title("HQ-Central")
                     .snippet("Downtown Core")
-                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED))
-            );
-            Marker north = map.addMarker(new MarkerOptions()
-                    .position(serangoon)
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)
+                    );
+            MarkerOptions north = new MarkerOptions()
+                    .position(SerangoonCoordinates)
                     .title("North-HQ")
                     .snippet("332 Serangoon Ave 3, Block 332, Singapore 550332")
-                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher)));
-            Marker east = map.addMarker(new MarkerOptions()
-                    .position(eastCoast)
+                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher)
+                    );
+            MarkerOptions east = new MarkerOptions()
+                    .position(EastCoastCoordinates)
                     .title("East-HQ")
                     .snippet("Tembeling Rd")
-                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)
+                    );
+            map.addMarker(central);
+            map.addMarker(north);
+            map.addMarker(east);
 
-
-            map.setOnMarkerClickListener(marker -> {
-
-                // TODO: provide a view with a quick tiny message for the user to see information about a location
-                Toast.makeText(MainActivity.this, marker.getTitle(), Toast.LENGTH_SHORT).show();
-
+            // TODO: provide a view with a quick tiny message for the user to see information about a location
+            map.setOnMarkerClickListener((Marker marker) -> {
+                Toast.makeText(MainActivity.this, "You have selected " + marker.getTitle(), Toast.LENGTH_SHORT).show();
                 return false;
             });
 
@@ -115,13 +115,13 @@ public class MainActivity extends AppCompatActivity {
                 public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                     // your code here
                     if (position == 0) {
-                        map.moveCamera(CameraUpdateFactory.newLatLngZoom(singapore, 11));
+                        map.moveCamera(CameraUpdateFactory.newLatLngZoom(SingaporeCoordinates, 11));
                     } else if (position == 1) {
-                        map.moveCamera(CameraUpdateFactory.newLatLngZoom(serangoon, 15));
+                        map.moveCamera(CameraUpdateFactory.newLatLngZoom(SerangoonCoordinates, 15));
                     } else if (position == 2) {
-                        map.moveCamera(CameraUpdateFactory.newLatLngZoom(downtownCore, 15));
+                        map.moveCamera(CameraUpdateFactory.newLatLngZoom(downtownCoreCoordinates, 15));
                     } else if (position == 3) {
-                        map.moveCamera(CameraUpdateFactory.newLatLngZoom(eastCoast, 15));
+                        map.moveCamera(CameraUpdateFactory.newLatLngZoom(EastCoastCoordinates, 15));
                     }
                 }
 
@@ -150,7 +150,8 @@ public class MainActivity extends AppCompatActivity {
                 // the class activity will request that permissions be granted to this application.
             } else {
                 Log.e("Gmap-Permission", "Gps access has not been granted");
-                ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 0);
+                ActivityCompat.requestPermissions(MainActivity.this, new String[]{
+                        Manifest.permission.ACCESS_FINE_LOCATION}, 0);
             }
 
 

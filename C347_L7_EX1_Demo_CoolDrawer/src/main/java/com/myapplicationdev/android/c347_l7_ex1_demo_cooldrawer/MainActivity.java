@@ -39,7 +39,10 @@ public class MainActivity extends AppCompatActivity {
         drawerItems = new String[]{"Biography", "Vaccination", "Anniversary"};
         actionBar = getSupportActionBar();
 
+        // the currentTitle will be the selected drawer Item
         currentTitle = this.getTitle().toString();
+
+        // on and off switch for the ActionBar
         actionBarDrawerToggle = new ActionBarDrawerToggle(MainActivity.this,
                 drawerLayout,    /* DrawerLayout object */
                 R.string.drawer_open, /* "open drawer" description */
@@ -56,26 +59,34 @@ public class MainActivity extends AppCompatActivity {
                 actionBar.setTitle("Make a selection");
             }
         };
+        // adding the actionBarDrawerToggle to drawerLayout
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
+
+        // after done selecting the drawer Item , it would return to homepage
         actionBar.setDisplayHomeAsUpEnabled(true);
 
+
+        // set Adapter for drawerList
         arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_activated_1, drawerItems);
         drawerList.setAdapter(arrayAdapter);
+
         drawerList.setOnItemClickListener((AdapterView<?> parent, View view, int position, long id) -> {
 
             fragment = null;
-
+            // TODO: positions of the fragments
             if (position == 0) {
                 fragment = new BiographyFragment();
             } else if (position == 1) {
                 fragment = new VaccinationFragment();
-            } else if (position == 2)
+            } else if (position == 2) {
                 fragment = new AnniversaryFragment();
+            }
 
             FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.content_frame, fragment);
             fragmentTransaction.commit();
+
             drawerList.setItemChecked(position, true);
             currentTitle = drawerItems[position];
 
@@ -95,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onConfigurationChanged(@NonNull Configuration newConfig) {
+        // Called by the system when the device configuration changes while your activity is running
         super.onConfigurationChanged(newConfig);
         actionBarDrawerToggle.syncState();
     }

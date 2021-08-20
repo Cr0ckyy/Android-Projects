@@ -48,29 +48,32 @@ public class MainActivity extends AppCompatActivity {
             When the object is entirely loaded, it will be ready.
             Because the time required for this object is dependent on the Internet connection,
             it is tracked individually.*/
-        mapFragment.getMapAsync(googleMap -> {
+        mapFragment.getMapAsync((GoogleMap googleMap) -> {
             map = googleMap;
 
              /* TODO:Classes that are immutable and represent a pair of
                  latitude and longitude coordinates saved as degrees.*/
-            LatLng poi_CausewayPoint = new LatLng(1.436065, 103.786263);
-            LatLng JurongEast = new LatLng(1.3329, 103.7436);
+            LatLng coordinatesCausewayPoint = new LatLng(1.436065, 103.786263);
+            LatLng CoordinatesJurongEast = new LatLng(1.3329, 103.7436);
 
             /* TODO: Icons that are placed at specific points on the map's surface. */
-            Marker cp = map.addMarker(new MarkerOptions()
-                    .position(poi_CausewayPoint)
+            MarkerOptions markerOptions1 = new MarkerOptions()
+                    .position(coordinatesCausewayPoint)
                     .title("Causeway Point")
                     .snippet("Shopping after class")
-                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
-            Marker je = map.addMarker(new MarkerOptions()
-                    .position(JurongEast)
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
+            MarkerOptions markerOptions2 = new MarkerOptions()
+                    .position(CoordinatesJurongEast)
                     .title("Jurong East")
                     .snippet("C347 Android Programming II")
-                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher)));
+                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher));
+            map.addMarker(markerOptions1);
+            map.addMarker(markerOptions2);
+
 
             /* TODO: classes provide methods for constructing CameraUpdate objects that alter the camera on a map*/
-            map.moveCamera(CameraUpdateFactory.newLatLngZoom(poi_CausewayPoint, 15));
-            map.moveCamera(CameraUpdateFactory.newLatLng(JurongEast));
+            map.moveCamera(CameraUpdateFactory.newLatLngZoom(coordinatesCausewayPoint, 15));
+            map.moveCamera(CameraUpdateFactory.newLatLng(CoordinatesJurongEast));
 
             /* TODO: Settings for the user interface of a GoogleMap.*/
             UiSettings ui = map.getUiSettings();

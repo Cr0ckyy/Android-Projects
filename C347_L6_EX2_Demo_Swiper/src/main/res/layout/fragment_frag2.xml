@@ -14,7 +14,8 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:text="Fragment 2"
-        android:textColor="#FFFFFF" />
+        android:textColor="#FFFFFF"
+        tools:ignore="HardcodedText" />
 
 </LinearLayout>
 

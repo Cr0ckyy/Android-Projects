@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">C347_L5_EX1_Demo_Fragment</string>
+    <string name="lineOfText">A line of text</string>
+    <string name="addTextBtn">Add Text</string>
+</resources>
