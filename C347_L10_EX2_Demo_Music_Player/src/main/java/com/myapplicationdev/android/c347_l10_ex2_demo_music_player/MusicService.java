@@ -18,8 +18,8 @@ public class MusicService extends Service {
     static final String TAG = "MusicService";
 
     @Override
+    // TODO: Return the communication channel to the service.
     public IBinder onBind(Intent intent) {
-        // TODO: Return the communication channel to the service.
         return null;
     }
 
@@ -33,7 +33,7 @@ public class MusicService extends Service {
         } else {
             Log.d(TAG, "Service is still running");
         }
-
+        // TODO: Music will be played once the service begins
         try {
             File file = new File(
                     Environment
@@ -43,7 +43,7 @@ public class MusicService extends Service {
 
             // specify the path of the audio file
             player.setDataSource(file.getPath());
-            player.prepare();
+            player.prepare(); // Prepares the player to be played
 
         } catch (Exception e) {
             e.printStackTrace();

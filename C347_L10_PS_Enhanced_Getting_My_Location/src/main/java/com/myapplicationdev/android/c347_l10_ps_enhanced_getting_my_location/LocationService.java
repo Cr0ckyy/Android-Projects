@@ -36,6 +36,7 @@ public class LocationService extends Service {
 
             String folderLocation = getFilesDir().getAbsolutePath() + "/LocationLogs";
             File folder = new File(folderLocation);
+
             if (!folder.exists()) {
                 boolean result = folder.mkdir();
                 if (result) {
@@ -100,7 +101,8 @@ public class LocationService extends Service {
                 LocationService.this, Manifest.permission.ACCESS_BACKGROUND_LOCATION);
 
         return permissionCheck_Coarse == PermissionChecker.PERMISSION_GRANTED
-                || permissionCheck_Fine == PermissionChecker.PERMISSION_GRANTED || permissionCheck_Bg == PermissionChecker.PERMISSION_GRANTED
+                || permissionCheck_Fine == PermissionChecker.PERMISSION_GRANTED ||
+                permissionCheck_Bg == PermissionChecker.PERMISSION_GRANTED
                 ;
     }
 

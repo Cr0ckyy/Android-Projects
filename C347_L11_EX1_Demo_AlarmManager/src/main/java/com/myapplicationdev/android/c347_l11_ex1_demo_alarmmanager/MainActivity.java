@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
             //Create a new PendingIntent and add it to the AlarmManager
             Intent intent = new Intent(MainActivity.this, AlarmReceiverActivity.class);
             int requestCode = 12345;
+
             @SuppressLint("UnspecifiedImmutableFlag") PendingIntent pendingIntent =
                     PendingIntent.getActivity(
                             MainActivity.this,
