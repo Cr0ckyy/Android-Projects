@@ -5,12 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#C5D5B4"
+    android:padding="20dp"
     tools:context=".Fragment3">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
 
         <TextView
             android:id="@+id/textViewfact4"
@@ -18,54 +20,60 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
+            android:text=" \u2022 111,111,111 x 111,111,111 = 12,345,678,987,654,321"
+            android:textSize="20sp"
             android:textStyle="bold"
-            android:textSize="20dp"
-            android:text=" \u2022 111,111,111 x 111,111,111 = 12,345,678,987,654,321" />
+            tools:ignore="HardcodedText" />
 
         <TextView
             android:id="@+id/textViewfact5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
+            android:text=" \u2022 All polar bears are left handed."
+            android:textSize="20sp"
             android:textStyle="bold"
-            android:textSize="20dp"
-            android:text=" \u2022 All polar bears are left handed." />
+            tools:ignore="HardcodedText" />
 
         <TextView
             android:id="@+id/textViewfact6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
+            android:text=" \u2022 Elephants are the only animals that can't jump."
+            android:textSize="20sp"
             android:textStyle="bold"
-            android:textSize="20dp"
-            android:text=" \u2022 Elephants are the only animals that can't jump." />
+            tools:ignore="HardcodedText" />
 
         <TextView
             android:id="@+id/RSS"
-            android:layout_gravity="center"
-            android:textStyle="bold"
-            android:textSize="30dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="RSS" />
+            android:layout_gravity="center"
+            android:text="RSS"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
 
         <TextView
             android:id="@+id/textViewRss"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:textSize="20dp"
             android:padding="10dp"
-            android:text="TextView" />
+            android:text="TextView"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
 
         <Button
             android:id="@+id/btnColorFrag3"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#5C931B"
             android:text="Change Color"
             android:textColor="#050505"
-            app:backgroundTint="#B6B5B5" />
+            app:backgroundTint="#B6B5B5"
+            tools:ignore="HardcodedText" />
     </LinearLayout>
 
 </FrameLayout>

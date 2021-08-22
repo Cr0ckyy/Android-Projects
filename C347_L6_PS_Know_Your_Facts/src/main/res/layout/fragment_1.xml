@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#D5C1C1"
+    android:padding="20dp"
     tools:context=".Fragment1">
 
     <!-- TODO: Update blank fragment layout -->
@@ -18,27 +19,30 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
+            android:text=" \u2022 It is impossible to sneeze with your eyes open"
+            android:textSize="20sp"
             android:textStyle="bold"
-            android:textSize="20dp"
-            android:text=" \u2022 It is impossible to sneeze with your eyes open" />
+            tools:ignore="HardcodedText" />
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
+            android:text=" \u2022 Rhythm is the longest English word without a vowel"
+            android:textSize="20sp"
             android:textStyle="bold"
-            android:textSize="20dp"
-            android:text=" \u2022 Rhythm is the longest English word without a vowel" />
+            tools:ignore="HardcodedText" />
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
+            android:text=" \u2022 It is impossible to lick your elbow."
+            android:textSize="20sp"
             android:textStyle="bold"
-            android:textSize="20dp"
-            android:text=" \u2022 It is impossible to lick your elbow." />
+            tools:ignore="HardcodedText" />
 
         <Button
             android:id="@+id/btnColorFrag1"
@@ -46,7 +50,8 @@
             android:layout_height="wrap_content"
             android:text="Change Color"
             android:textColor="#050505"
-            app:backgroundTint="#B6B5B5" />
+            app:backgroundTint="#B6B5B5"
+            tools:ignore="HardcodedText" />
 
     </LinearLayout>
 

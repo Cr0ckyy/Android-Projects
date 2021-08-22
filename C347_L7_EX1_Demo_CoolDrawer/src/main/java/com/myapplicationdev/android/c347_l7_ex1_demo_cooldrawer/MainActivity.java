@@ -33,9 +33,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // TODO: the "Hamburger" Menu
         drawerLayout = findViewById(R.id.drawer_layout);
         drawerList = findViewById(R.id.left_drawer);
 
+        // TODO: the "Hamburger" Menu Items
         drawerItems = new String[]{"Biography", "Vaccination", "Anniversary"};
         actionBar = getSupportActionBar();
 
@@ -43,10 +45,12 @@ public class MainActivity extends AppCompatActivity {
         currentTitle = this.getTitle().toString();
 
         // on and off switch for the ActionBar
-        actionBarDrawerToggle = new ActionBarDrawerToggle(MainActivity.this,
+        actionBarDrawerToggle = new ActionBarDrawerToggle(
+                MainActivity.this,
                 drawerLayout,    /* DrawerLayout object */
                 R.string.drawer_open, /* "open drawer" description */
-                R.string.drawer_close) { /* "close drawer" description */
+                R.string.drawer_close)/* "close drawer" description */ {
+
             @Override
             public void onDrawerClosed(View drawerView) {
                 super.onDrawerClosed(drawerView);
@@ -59,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
                 actionBar.setTitle("Make a selection");
             }
         };
+
         // adding the actionBarDrawerToggle to drawerLayout
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
 
@@ -70,10 +75,11 @@ public class MainActivity extends AppCompatActivity {
         arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_activated_1, drawerItems);
         drawerList.setAdapter(arrayAdapter);
 
+        // TODO: clicking action of drawerList
         drawerList.setOnItemClickListener((AdapterView<?> parent, View view, int position, long id) -> {
 
             fragment = null;
-            // TODO: positions of the fragments
+            // positions of the fragments
             if (position == 0) {
                 fragment = new BiographyFragment();
             } else if (position == 1) {
@@ -82,15 +88,17 @@ public class MainActivity extends AppCompatActivity {
                 fragment = new AnniversaryFragment();
             }
 
+            // setting of fragments
             FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.content_frame, fragment);
             fragmentTransaction.commit();
 
+            // when clicking a drawer item
             drawerList.setItemChecked(position, true);
             currentTitle = drawerItems[position];
 
-            // Set the drawer toggle as the DrawerListener
+            //  Set the drawer toggle as the DrawerListener
             actionBar.setTitle(currentTitle);
             drawerLayout.closeDrawer(drawerList);
         });

@@ -4,6 +4,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,11 +16,11 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
-    ArrayList<Fragment> al;
+    ArrayList<Fragment> fragments;
     MyFragmentPagerAdapter adapter;
     ViewPager vPager;
     Button btnCloseActivity;
-    private SharedPreferences savedIndex;
+    SharedPreferences savedIndex;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,17 +30,19 @@ public class MainActivity extends AppCompatActivity {
         vPager = findViewById(R.id.viewpager);
         btnCloseActivity = findViewById(R.id.buttonLater);
 
-        FragmentManager fm = getSupportFragmentManager();
-        al = new ArrayList<>();
-        al.add(new Fragment1());
-        al.add(new Fragment2());
-        al.add(new Fragment3());
+        // TODO: Return the FragmentManager for interacting with this activity's fragments.
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragments = new ArrayList<>();
+        fragments.add(new Fragment1());
+        fragments.add(new Fragment2());
+        fragments.add(new Fragment3());
 
-        adapter = new MyFragmentPagerAdapter(fm, al);
+        // add fragments view into the MyFragmentPagerAdapter
+        adapter = new MyFragmentPagerAdapter(fragmentManager, fragments);
 
         vPager.setAdapter(adapter);
 
-        btnCloseActivity.setOnClickListener(v -> finish());
+        btnCloseActivity.setOnClickListener((View v) -> finish());
     }
 
     @Override
@@ -50,20 +53,23 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
         Random randomPageNo = new Random();
-        int id = item.getItemId();
-        if (id == R.id.action_next) {
+        int itemId = item.getItemId();
+
+        if (itemId == R.id.action_next) {
             int max = vPager.getChildCount();
             if (vPager.getCurrentItem() < max - 1) {
                 vPager.setCurrentItem(vPager.getCurrentItem() + 1, true);
             }
-        } else if (id == R.id.action_previous) {
+
+        } else if (itemId == R.id.action_previous) {
             if (vPager.getCurrentItem() > 0) {
                 int previousPage = vPager.getCurrentItem() - 1;
                 vPager.setCurrentItem(previousPage, true);
             }
 
-        } else if (id == R.id.action_random) {
+        } else if (itemId == R.id.action_random) {
             int randomPage = randomPageNo.nextInt(vPager.getChildCount());
             System.out.println(randomPage);
             vPager.setCurrentItem(randomPage, true);
@@ -74,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    // TODO: Called when the user no longer interacts with the activity but it is still visible on screen.
     protected void onPause() {
         SharedPreferences.Editor editor = savedIndex.edit();
         editor.putInt("savedIndex", vPager.getCurrentItem());
@@ -82,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    // TODO: Call this after onPause/nRestart/onRestoreInstanceState to interact with the user
     protected void onResume() {
         savedIndex = getSharedPreferences("savedIndex", MODE_PRIVATE);
         vPager.setCurrentItem(savedIndex.getInt("savedIndex", 0));

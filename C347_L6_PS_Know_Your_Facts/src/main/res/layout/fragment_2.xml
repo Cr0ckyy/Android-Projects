@@ -4,17 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+    android:padding="20dp"
     tools:context=".Fragment2">
-    <ScrollView      android:layout_width="match_parent"
-        android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="UselessParent">
+
         <LinearLayout
             android:id="@+id/layoutfor2"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:background="#B8DEE3"
             android:orientation="vertical">
-
 
 
             <ImageView
@@ -22,31 +25,35 @@
                 android:layout_width="300dp"
                 android:layout_height="200dp"
                 android:layout_gravity="center"
-                android:layout_margin="20dp" />
+                android:layout_margin="20dp"
+                tools:ignore="ContentDescription" />
 
             <ImageView
                 android:id="@+id/iv2"
                 android:layout_width="300dp"
                 android:layout_height="200dp"
                 android:layout_gravity="center"
-                android:layout_margin="20dp" />
+                android:layout_margin="20dp"
+                tools:ignore="ContentDescription" />
 
             <ImageView
                 android:id="@+id/iv3"
                 android:layout_width="300dp"
                 android:layout_height="200dp"
                 android:layout_gravity="center"
-                android:layout_margin="20dp" />
+                android:layout_margin="20dp"
+                tools:ignore="ContentDescription" />
 
 
             <Button
                 android:id="@+id/btnColorFrag2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Change Color"
                 android:layout_gravity="center"
+                android:text="Change Color"
                 android:textColor="#050505"
-                app:backgroundTint="#B6B5B5" />
+                app:backgroundTint="#B6B5B5"
+                tools:ignore="HardcodedText" />
         </LinearLayout>
     </ScrollView>
 

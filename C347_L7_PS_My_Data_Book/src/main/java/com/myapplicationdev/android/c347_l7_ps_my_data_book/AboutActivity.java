@@ -17,16 +17,18 @@ public class AboutActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
 
+        imageView = findViewById(R.id.iv);
+
         // TODO: setting of actionBar
         actionBar = getSupportActionBar();
         assert actionBar != null;
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-        imageView = findViewById(R.id.iv);
+
 
         String imageUrl = "https://upload.wikimedia.org/wikipedia/commons/8/80/Republic_Polytechnic_Logo.jpg";
 
-        // TODO: setting of Picasso
+        // TODO: load URL image into ImageViews with Picasso
         Picasso.with(this)
                 .load(imageUrl)
                 .placeholder(R.drawable.loading)
