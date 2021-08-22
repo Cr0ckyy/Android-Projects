@@ -7,20 +7,24 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <EditText
+        android:id="@+id/editTextMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Hi" />
 
-    <TextView
-        android:id="@+id/textViewSuperman"
+    <Button
+        android:id="@+id/buttonEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="Superman"
-        android:textSize="26sp" />
+        android:text="Send Email" />
 
-    <TextView
-        android:id="@+id/textViewBatman"
+    <Button
+        android:id="@+id/buttonRP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="Batman"
-        android:textSize="26sp" />
+        android:text="Visit RP" />
+
 </LinearLayout>
