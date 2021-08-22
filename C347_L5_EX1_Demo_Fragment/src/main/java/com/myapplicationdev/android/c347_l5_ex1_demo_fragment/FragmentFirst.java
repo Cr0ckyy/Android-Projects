@@ -36,19 +36,18 @@ public class FragmentFirst extends Fragment {
                              Bundle savedInstanceState) {
 
         //  TODO: Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_first, container, false);
+        View fragmentView = inflater.inflate(R.layout.fragment_first, container, false);
 
         //  TODO: Get the View object to use its  findViewById() method
-        tvFrag1 = view.findViewById(R.id.tvFrag1);
-        btnAddText = view.findViewById(R.id.btnAddTextFrag1);
+        tvFrag1 = fragmentView.findViewById(R.id.tvFrag1);
+        btnAddText = fragmentView.findViewById(R.id.btnAddTextFrag);
 
-        btnAddText.setOnClickListener(view1 -> {
-
+        btnAddText.setOnClickListener((View view1) -> {
 
             String data = tvFrag1.getText().toString() + "\n" + "New Data";
             tvFrag1.setText(data);
 
         });
-        return view;
+        return fragmentView;
     }
 }

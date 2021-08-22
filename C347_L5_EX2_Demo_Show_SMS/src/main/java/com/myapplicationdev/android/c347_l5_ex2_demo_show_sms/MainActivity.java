@@ -1,12 +1,14 @@
 package com.myapplicationdev.android.c347_l5_ex2_demo_show_sms;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.ContentResolver;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.format.DateFormat;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -40,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        btnRetrieve.setOnClickListener(view -> {
+        btnRetrieve.setOnClickListener((View view) -> {
 
             // TODO: Retrieve an SMS message from the built-in content provider
             // Get Content Resolver object from which to
@@ -62,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
             String[] filterArgs = {"%Hello%", "%5556%"};
 
 
-            Cursor cursor = contentResolver.query(uri, reqCols, filter, filterArgs, null);
+            @SuppressLint("Recycle") Cursor cursor = contentResolver.query(uri, reqCols, filter, filterArgs, null);
             StringBuilder smsBody = new StringBuilder();
 
             if (cursor.moveToFirst()) {
@@ -99,24 +101,22 @@ public class MainActivity extends AppCompatActivity {
     */
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        switch (requestCode) {
-            case 0: {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == 0) {// If request is cancelled, the result arrays are empty.
+            if (grantResults.length > 0
+                    && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
-                // If request is cancelled, the result arrays are empty.
-                if (grantResults.length > 0
-                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // permission was granted, yay! Do the read SMS
+                //  as if the btnRetrieve is clicked
+                btnRetrieve.performClick();
 
-                    // permission was granted, yay! Do the read SMS
-                    //  as if the btnRetrieve is clicked
-                    btnRetrieve.performClick();
-
-                } else {
-                    // permission denied... notify user
-                    Toast.makeText(MainActivity.this, "Permission not granted",
-                            Toast.LENGTH_SHORT).show();
-                }
-
+            } else {
+                // permission denied... notify user
+                Toast.makeText(MainActivity.this, "Permission not granted",
+                        Toast.LENGTH_SHORT).show();
             }
+        } else {
+            throw new IllegalStateException("Unexpected value: " + requestCode);
         }
     }
 }

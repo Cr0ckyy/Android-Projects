@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
             if (result) {
                 Log.d("File read/write", "Folder Created");
             } else {
-                Toast.makeText(this, "The creation of a folder was unsuccessful.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "The folder creation failed.", Toast.LENGTH_SHORT).show();
             }
         }
 

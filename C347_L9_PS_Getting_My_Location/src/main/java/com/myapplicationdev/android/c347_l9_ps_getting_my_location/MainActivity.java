@@ -42,8 +42,8 @@ public class MainActivity extends AppCompatActivity {
     Button btnGetLocationUpdate, btnRemoveLocationUpdate, btnCheckRecords;
     TextView tvLocation, tvLatitude, tvLongitude;
     LatLng downtownCoreCoordinates;
-    LocationRequest mLocationRequest;
-    LocationCallback mLocationCallback;
+    LocationRequest locationRequest;
+    LocationCallback locationCallback;
     Marker central;
 
     @SuppressLint("SetTextI18n")
@@ -155,14 +155,14 @@ public class MainActivity extends AppCompatActivity {
         btnGetLocationUpdate.setOnClickListener(v -> {
             checkPermission();
 
-            mLocationRequest = LocationRequest.create();
-            mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-            mLocationRequest.setInterval(30000);
-            mLocationRequest.setFastestInterval(5000);
-            mLocationRequest.setSmallestDisplacement(500);
+            locationRequest = LocationRequest.create();
+            locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+            locationRequest.setInterval(30000);
+            locationRequest.setFastestInterval(5000);
+            locationRequest.setSmallestDisplacement(500);
 
 
-            mLocationCallback = new LocationCallback() {
+            locationCallback = new LocationCallback() {
                 @Override
                 public void onLocationResult(@NonNull LocationResult locationResult) {
                     Location data = locationResult.getLastLocation();
@@ -204,22 +204,17 @@ public class MainActivity extends AppCompatActivity {
 
                         }
                     }
-
-
                 }
-
-                ;
-
 
             };
 
-            client.requestLocationUpdates(mLocationRequest, mLocationCallback, null);
+            client.requestLocationUpdates(locationRequest, locationCallback, null);
 
         });
 
         btnRemoveLocationUpdate.setOnClickListener((View v) -> {
             checkPermission();
-            client.removeLocationUpdates(mLocationCallback);
+            client.removeLocationUpdates(locationCallback);
             Toast.makeText(MainActivity.this,
                     "The given location result listener's location updates have been removed.",
                     Toast.LENGTH_LONG).show();

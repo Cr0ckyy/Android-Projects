@@ -53,10 +53,10 @@ public class MainActivity extends AppCompatActivity {
             public void onLocationResult(@NonNull LocationResult locationResult) {
 
                 // Returns the most recent location found in this result
-                Location currentLocation = locationResult.getLastLocation();
+                Location lastLocation = locationResult.getLastLocation();
 
                 String toastMsg = String.format("New Location found:\nLatitude: %s\nLongitude: %s"
-                        , currentLocation.getLatitude(), currentLocation.getLongitude());
+                        , lastLocation.getLatitude(), lastLocation.getLongitude());
                 Toast.makeText(MainActivity.this, toastMsg, Toast.LENGTH_SHORT).show();
             }
         };
@@ -67,22 +67,27 @@ public class MainActivity extends AppCompatActivity {
             // Runtime permission check
             if (checkPermission()) {
 
-                // Begin the detection process by requesting a service quality
-                // for location updates from the API.
+                // to request location updates
                 locationRequest = new LocationRequest();
-                locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY); // Set the priority of the request.
-                locationRequest.setInterval(10000); // Set the millisecond interval for active location updates.
-                locationRequest.setFastestInterval(5000); // Set the fastest interval for location updates explicitly in milliseconds.
-                locationRequest.setSmallestDisplacement(100); // Set the minimum distance in meters between location updates.
+                // Set the priority of the request.
+                locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+                // Set the fastest location update interval in milliseconds
+                locationRequest.setInterval(10000);
+                // Set the fastest location update interval in milliseconds.
+                locationRequest.setFastestInterval(5000);
+                // Minimum distance between location updates in meters.
+                locationRequest.setSmallestDisplacement(100);
+
                 locationClient.requestLocationUpdates(locationRequest, locationCallback, null);
 
             } else {
-                String toastMsg = "Location information cannot be retrieved because permission has not been granted.";
+                String toastMsg = "Permission to retrieve location data is required.";
                 Toast.makeText(MainActivity.this, toastMsg, Toast.LENGTH_SHORT).show();
 
                 // Activity Helper requests permissions to be granted to this application
                 ActivityCompat.requestPermissions(MainActivity.this,
-                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION,
+                        new String[]{
+                                Manifest.permission.ACCESS_FINE_LOCATION,
                                 Manifest.permission.ACCESS_COARSE_LOCATION}, 0);
             }
         });
@@ -93,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
             // All location updates for the given location result listener are removed.
             locationClient.removeLocationUpdates(locationCallback);
 
-            String toastMsg = "Location updates were successfully removed.";
+            String toastMsg = "Location updates were removed.";
             Toast.makeText(MainActivity.this, toastMsg, Toast.LENGTH_SHORT).show();
         });
 
@@ -118,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
                 });
 
             } else {
-                String toastMsg = "Permission not granted to retrieve location info.";
+                String toastMsg = "No permission to retrieve location data.";
                 Toast.makeText(MainActivity.this, toastMsg, Toast.LENGTH_SHORT).show();
                 ActivityCompat.requestPermissions(MainActivity.this,
                         new String[]{Manifest.permission.ACCESS_FINE_LOCATION,

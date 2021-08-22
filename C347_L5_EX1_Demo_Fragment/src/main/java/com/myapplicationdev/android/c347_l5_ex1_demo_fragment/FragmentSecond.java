@@ -31,15 +31,14 @@ public class FragmentSecond extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_second, container, false);
 
         tvFrag2 = view.findViewById(R.id.tvFrag2);
         btnAddText = view.findViewById(R.id.btnAddTextFrag2);
 
-        btnAddText.setOnClickListener(view1 -> {
+        btnAddText.setOnClickListener((View view1) -> {
             String data = tvFrag2.getText().toString() + "\n" + "New Data F2";
             tvFrag2.setText(data);
         });
