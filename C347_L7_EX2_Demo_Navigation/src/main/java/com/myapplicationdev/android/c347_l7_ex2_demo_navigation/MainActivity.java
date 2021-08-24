@@ -1,6 +1,7 @@
 package com.myapplicationdev.android.c347_l7_ex2_demo_navigation;
 
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -15,11 +16,16 @@ public class MainActivity extends AppCompatActivity {
 
     Button btnNewActivity;
     FloatingActionButton floatingActionButton;
-
+    ActionBar actionBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        actionBar = getSupportActionBar();
+        assert actionBar != null;
+        // TODO: enable "Return arrow" function in ActionBar
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         btnNewActivity = findViewById(R.id.btnNewActivity);
         floatingActionButton = findViewById(R.id.fab);
@@ -31,7 +37,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
         floatingActionButton.setOnClickListener((View v) ->
-                Toast.makeText(getApplicationContext(), "Floating Action Button is pressed", Toast.LENGTH_SHORT).show());
+                Toast.makeText(getApplicationContext(), "Floating Action Button is pressed", Toast.LENGTH_SHORT).show()
+        );
     }
 }
 

@@ -34,10 +34,14 @@ public class LocationService extends Service {
         //LocationService locationService = LocationService.this;
         void start(MainActivity mainActivity) {
 
+            //  TODO: 1.Folder creation
             String folderLocation = getFilesDir().getAbsolutePath() + "/LocationLogs";
             File folder = new File(folderLocation);
 
+
             if (!folder.exists()) {
+
+                //  TODO: 2.Making folder directory
                 boolean result = folder.mkdir();
                 if (result) {
                     Log.d("File read/write", "Folder Created");
@@ -45,28 +49,30 @@ public class LocationService extends Service {
                     Toast.makeText(getApplicationContext(), "folder creation FAILED!!", Toast.LENGTH_SHORT).show();
                 }
             }
-
+            //  TODO: create a "log.txt"
             File locationLog = new File(folderLocation, "log.txt");
 
-
-            client = LocationServices.getFusedLocationProviderClient(getApplicationContext());
-
+            //  TODO: create Location Request
             LocationRequest locationRequest = LocationRequest.create();
             locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
             locationRequest.setInterval(0); // in ms
             locationRequest.setSmallestDisplacement(0);
 
+            //  TODO: getting the locationResult
             locationCallback = new LocationCallback() {
                 @Override
                 public void onLocationResult(@NonNull LocationResult locationResult) {
-                    Location location = locationResult.getLastLocation();
+                    Location lastLocation = locationResult.getLastLocation();
+
                     if (mainActivity != null) {
-                        mainActivity.updateLastLocation(location);
+                        mainActivity.updateLastLocation(lastLocation);
                     }
 
+
                     try {
+                        // TODO: writing coordinate data into the locationLog
                         FileWriter writer = new FileWriter(locationLog, true);
-                        writer.write(coordinatesForRecords(location));
+                        writer.write(toStringCoordinates(lastLocation));
                         writer.flush();
                         writer.close();
                     } catch (Exception e) {
@@ -75,7 +81,13 @@ public class LocationService extends Service {
                     }
                 }
             };
+
+
+            //  TODO: create Location Client
+            client = LocationServices.getFusedLocationProviderClient(getApplicationContext());
+
             if (checkLocationPermission()) {
+                //  TODO: request Location Updates from Location Client
                 client.requestLocationUpdates(locationRequest, locationCallback, null);
             } else {
                 failedPermissionToast();
@@ -120,7 +132,7 @@ public class LocationService extends Service {
         super.onDestroy();
     }
 
-    private String coordinatesForRecords(Location location) {
+    private String toStringCoordinates(Location location) {
         return location.getLatitude() + ", " + location.getLongitude() + "\n";
     }
 }

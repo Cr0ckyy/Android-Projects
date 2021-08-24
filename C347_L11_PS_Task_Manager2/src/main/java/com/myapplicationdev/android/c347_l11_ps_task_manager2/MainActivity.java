@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+
         tasks = new ArrayList<>();
         DBHelper dbh = new DBHelper(MainActivity.this);
         tasks.addAll(dbh.getAllTasks());

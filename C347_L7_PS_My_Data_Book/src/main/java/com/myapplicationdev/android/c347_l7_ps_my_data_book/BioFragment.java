@@ -23,8 +23,6 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.util.Objects;
-
 
 public class BioFragment extends Fragment {
     static final int MODE_PRIVATE = 0;
@@ -40,10 +38,11 @@ public class BioFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.biofragment, container, false);
+        View view = inflater.inflate(R.layout.fragment_bio, container, false);
         FloatingActionButton fab = view.findViewById(R.id.fab);
         ab = ((AppCompatActivity) getActivity()).getSupportActionBar();
         assert ab != null;
+        // TODO: enable "Return arrow" function in ActionBar
         ab.setDisplayHomeAsUpEnabled(true);
         drawerLayout = getActivity().findViewById(R.id.drawer_layout);
         drawerToggle = new ActionBarDrawerToggle(getActivity(), drawerLayout, R.string.drawer_open, R.string.drawer_close);
@@ -59,7 +58,7 @@ public class BioFragment extends Fragment {
 
             // Inflate and set the layout for the dialog
             // Pass null as the parent view because its going in the dialog layout
-            builder.setView(inflater1.inflate(R.layout.customalert, null))
+            builder.setView(inflater1.inflate(R.layout.customer_alert1, null))
                     // Add action buttons
 
                     .setPositiveButton("Ok", (DialogInterface dialog, int id) -> {

@@ -15,25 +15,31 @@ import androidx.core.app.NotificationCompat;
 public class ScheduledNotificationReceiver extends BroadcastReceiver {
     int requestCode = 12345;
     Intent myIntent;
-    NotificationManager notificationManager;
 
     @Override
     public void onReceive(Context context, Intent intent) {
 
-        notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        // TODO: return notification service
+        NotificationManager notificationManager = (NotificationManager)
+                context.getSystemService(Context.NOTIFICATION_SERVICE);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            NotificationChannel channel = new NotificationChannel("default", "Default Channel", NotificationManager.IMPORTANCE_DEFAULT);
+
+            // TODO:  channelling notification
+            NotificationChannel channel = new NotificationChannel("default",
+                    "Default Channel", NotificationManager.IMPORTANCE_DEFAULT); // loud notification that appeared
             channel.setDescription("This is for default notification");
             notificationManager.createNotificationChannel(channel);
         }
 
         myIntent = new Intent(context, MainActivity.class);
         @SuppressLint("UnspecifiedImmutableFlag") PendingIntent pendingIntent =
-                PendingIntent.getActivity(context,
+                PendingIntent.getActivity(
+                        context,
                         requestCode,
                         myIntent,
-                        PendingIntent.FLAG_CANCEL_CURRENT);
+                        PendingIntent.FLAG_CANCEL_CURRENT
+                );
 
         // Build notification
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "default");

@@ -8,6 +8,7 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 
 import java.util.Calendar;
@@ -23,11 +24,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         buttonSetAlarm = findViewById(R.id.btnAlarm);
 
-        buttonSetAlarm.setOnClickListener(view -> {
+        buttonSetAlarm.setOnClickListener((View view) -> {
 
             // a calendar with the default time zone and locale.
             Calendar calendar = Calendar.getInstance();
-            calendar.add(Calendar.SECOND, 2);
+            calendar.add(Calendar.SECOND, 2); // add the time it takes to show up
 
             //Create a new PendingIntent and add it to the AlarmManager
             Intent intent = new Intent(MainActivity.this, AlarmReceiverActivity.class);

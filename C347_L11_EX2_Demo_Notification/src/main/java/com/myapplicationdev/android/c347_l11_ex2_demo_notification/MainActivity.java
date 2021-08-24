@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
             // notificationManager alerts the user to events
             NotificationManager notificationManager = (NotificationManager)
-                    getSystemService(NOTIFICATION_SERVICE);
+                    getSystemService(NOTIFICATION_SERVICE); // loud notification sound
 
             // ensuring SDK version is greater than 0
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -51,8 +51,10 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, MainActivity.class);
             @SuppressLint("UnspecifiedImmutableFlag") PendingIntent pendingIntent =
                     PendingIntent.getActivity
-                            (MainActivity.this, requestCode, intent,
-                                    PendingIntent.FLAG_CANCEL_CURRENT);
+                            (MainActivity.this,
+                                    requestCode, intent,
+                                    PendingIntent.FLAG_CANCEL_CURRENT
+                            );
 
             // Build notification
             NotificationCompat.Builder builder = new
@@ -132,10 +134,10 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, MainActivity.class);
             @SuppressLint("UnspecifiedImmutableFlag") PendingIntent pendingIntent =
                     PendingIntent.getActivity
-                    (MainActivity.this,
-                            requestCode,
-                            intent,
-                            PendingIntent.FLAG_CANCEL_CURRENT);
+                            (MainActivity.this,
+                                    requestCode,
+                                    intent,
+                                    PendingIntent.FLAG_CANCEL_CURRENT);
 
             NotificationCompat.BigPictureStyle bigPicture = new NotificationCompat.BigPictureStyle();
             bigPicture.bigPicture(BitmapFactory.decodeResource(getResources(), R.drawable.sentosa)).build();

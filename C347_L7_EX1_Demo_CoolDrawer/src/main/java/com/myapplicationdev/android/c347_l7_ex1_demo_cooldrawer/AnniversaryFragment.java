@@ -14,7 +14,6 @@ public class AnniversaryFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
     }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // TODO: Inflate the layout for this fragment

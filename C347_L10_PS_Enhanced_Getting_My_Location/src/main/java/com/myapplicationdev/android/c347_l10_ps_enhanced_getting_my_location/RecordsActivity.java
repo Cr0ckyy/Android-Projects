@@ -47,9 +47,9 @@ public class RecordsActivity extends AppCompatActivity {
 
         updateList();
 
-        refreshButton.setOnClickListener(view -> {
-            updateList();
-        });
+        refreshButton.setOnClickListener((View view) ->
+                updateList()
+        );
 
         recordsListView.setOnItemClickListener(
                 (AdapterView<?> adapterView, View view, int idx, long l) -> {
@@ -99,8 +99,8 @@ public class RecordsActivity extends AppCompatActivity {
         if (locationLog.exists()) {
             try {
                 coordinates.clear();
-                FileReader reader = new FileReader(locationLog);
-                BufferedReader bufferedReader = new BufferedReader(reader);
+                FileReader fileReader = new FileReader(locationLog);
+                BufferedReader bufferedReader = new BufferedReader(fileReader);
 
                 String line = bufferedReader.readLine();
                 while (line != null) {
@@ -108,7 +108,8 @@ public class RecordsActivity extends AppCompatActivity {
                     line = bufferedReader.readLine();
                 }
                 bufferedReader.close();
-                reader.close();
+                fileReader.close();
+
             } catch (Exception e) {
                 Toast.makeText(this, "Fail to read file", Toast.LENGTH_SHORT).show();
                 e.printStackTrace();

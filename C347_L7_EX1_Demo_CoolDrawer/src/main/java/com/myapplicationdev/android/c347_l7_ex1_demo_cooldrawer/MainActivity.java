@@ -70,7 +70,6 @@ public class MainActivity extends AppCompatActivity {
         // after done selecting the drawer Item , it would return to homepage
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-
         // set Adapter for drawerList
         arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_activated_1, drawerItems);
         drawerList.setAdapter(arrayAdapter);
@@ -126,7 +125,6 @@ public class MainActivity extends AppCompatActivity {
         if (actionBarDrawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 }

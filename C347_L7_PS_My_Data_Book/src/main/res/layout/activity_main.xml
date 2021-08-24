@@ -22,7 +22,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
-        app:menu="@menu/drawermenu"/>
+        app:menu="@menu/menu_drawer"/>
 
 
 

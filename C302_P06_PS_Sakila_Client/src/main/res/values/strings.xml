@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">C302_L6_PS_Sakila_Client</string>
+    <string name="title">title:</string>
+    <string name="description">Description:</string>
+    <string name="release_year">Release Year:</string>
+    <string name="rating">Rating:</string>
+    <string name="action">Action</string>
+    <string name="category_summary">Category Summary</string>
+    <string name="number_of_films">Number of Films</string>
+    <string name="category">Category</string>
+</resources>

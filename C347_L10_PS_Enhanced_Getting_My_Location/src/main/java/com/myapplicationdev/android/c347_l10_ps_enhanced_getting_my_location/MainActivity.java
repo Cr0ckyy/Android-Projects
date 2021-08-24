@@ -9,6 +9,7 @@ import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.TextView;
@@ -42,18 +43,19 @@ public class MainActivity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.Q)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
-        // location permission
-        @SuppressLint("InlinedApi") String[] permissions = new String[]{Manifest.permission.ACCESS_FINE_LOCATION,
+        // TODO: give permissions
+        @SuppressLint("InlinedApi") String[] permissions = new String[]{
+                Manifest.permission.ACCESS_FINE_LOCATION,
                 Manifest.permission.ACCESS_BACKGROUND_LOCATION,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE,
                 Manifest.permission.READ_EXTERNAL_STORAGE,
-                Manifest.permission.MANAGE_EXTERNAL_STORAGE};
-
+                Manifest.permission.MANAGE_EXTERNAL_STORAGE
+        };
         ActivityCompat.requestPermissions(MainActivity.this, permissions, 0);
 
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
         coordinatesTextView = findViewById(R.id.lastCoordinatesTextView);
         getLocationButton = findViewById(R.id.getLocationButton);
@@ -74,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
         SupportMapFragment mapFragment = (SupportMapFragment) fragmentManager.findFragmentById(R.id.mapView);
 
         assert mapFragment != null;
-        mapFragment.getMapAsync(googleMap -> {
+        mapFragment.getMapAsync((GoogleMap googleMap) -> {
             map = googleMap;
             map.moveCamera(CameraUpdateFactory.newLatLngZoom(singaporeCoords, 10));
             UiSettings uiSettings = map.getUiSettings();
@@ -84,20 +86,20 @@ public class MainActivity extends AppCompatActivity {
         removeLocationButton.setEnabled(false);
 
 
-        getLocationButton.setOnClickListener(view -> {
+        getLocationButton.setOnClickListener((View view) -> {
             Intent bindIntent = new Intent(MainActivity.this, LocationService.class);
             bindService(bindIntent, connection, BIND_AUTO_CREATE);
             getLocationButton.setEnabled(false);
             removeLocationButton.setEnabled(true);
         });
 
-        removeLocationButton.setOnClickListener(view -> {
+        removeLocationButton.setOnClickListener((View view) -> {
             unbindService(connection);
             getLocationButton.setEnabled(true);
             removeLocationButton.setEnabled(false);
         });
 
-        checkRecordsButton.setOnClickListener(view -> {
+        checkRecordsButton.setOnClickListener((View view) -> {
             Intent intent = new Intent(MainActivity.this, RecordsActivity.class);
             startActivity(intent);
         });
@@ -118,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
     };
 
     void updateLastLocation(Location location) {
-        coordinatesTextView.setText(textFrom(location));
+        coordinatesTextView.setText(toStringCoordinates(location));
 
         if (currentLocationMarker == null) {
             MarkerOptions options = new MarkerOptions()
@@ -135,9 +137,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    String textFrom(Location location) {
-        return "Latitude: " + location.getLatitude()
-                + "\nLongitude: " + location.getLongitude();
+    String toStringCoordinates(Location location) {
+        return "Latitude: " + location.getLatitude() + "\nLongitude: " + location.getLongitude();
     }
 
     LatLng coordinatesFrom(Location location) {

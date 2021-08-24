@@ -54,7 +54,7 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     public ArrayList<Task> getAllTasks() {
-        ArrayList<Task> tasks = new ArrayList<Task>();
+        ArrayList<Task> tasks = new ArrayList<>();
 
         String selectQuery = "SELECT "
                 + COLUMN_ID + ","

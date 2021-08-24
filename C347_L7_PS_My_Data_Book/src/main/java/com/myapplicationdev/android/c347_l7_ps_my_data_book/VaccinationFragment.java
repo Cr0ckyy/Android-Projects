@@ -3,6 +3,7 @@ package com.myapplicationdev.android.c347_l7_ps_my_data_book;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -40,7 +41,7 @@ public class VaccinationFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
-        view = inflater.inflate(R.layout.vaccinationfragment, container, false);
+        view = inflater.inflate(R.layout.fragment_vaccination, container, false);
         fab = view.findViewById(R.id.fab3);
         tvShow = view.findViewById(R.id.tvShowFrag);
         btnVaccinationFragment = view.findViewById(R.id.btnFragVacc);
@@ -61,10 +62,10 @@ public class VaccinationFragment extends Fragment {
 
             // Inflate and set the layout for the dialog
             // Pass null as the parent view because its going in the dialog layout
-            builder.setView(inflater1.inflate(R.layout.customalert2, null))
+            builder.setView(inflater1.inflate(R.layout.customer_alert2, null))
                     // Add action buttons
 
-                    .setPositiveButton("Ok", (dialog, id) -> {
+                    .setPositiveButton("Ok", (DialogInterface dialog, int id) -> {
                         // sign in the user ...
                         Dialog newDialog = (Dialog) dialog;
                         EditText newBio = newDialog.findViewById(R.id.etNewAnni);
@@ -74,7 +75,7 @@ public class VaccinationFragment extends Fragment {
                             Toast.makeText(getContext(), "Enter Something!", Toast.LENGTH_SHORT).show();
                         }
                     })
-                    .setNegativeButton("Cancel", (dialog, id) -> dialog.dismiss());
+                    .setNegativeButton("Cancel", (DialogInterface dialog, int id) -> dialog.dismiss());
             builder.create().show();
         });
 

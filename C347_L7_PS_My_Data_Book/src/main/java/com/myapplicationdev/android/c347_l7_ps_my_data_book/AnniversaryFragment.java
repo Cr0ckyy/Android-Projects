@@ -40,22 +40,23 @@ public class AnniversaryFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.anniversaryfragment, container, false);
+        View view = inflater.inflate(R.layout.fragment_anniversary, container, false);
         FloatingActionButton floatingActionButton = view.findViewById(R.id.fab3);
         tvShow = view.findViewById(R.id.tvShowAnniv);
         btnAnniversaryFragment = view.findViewById(R.id.btnFragAnni);
-
+        drawerLayout =  view.findViewById(R.id.drawer_layout);
 
         actionBar = ((AppCompatActivity) requireActivity()).getSupportActionBar();
         assert actionBar != null;
+        // TODO: enable "Return arrow" function in ActionBar
         actionBar.setDisplayHomeAsUpEnabled(true);
         drawerToggle = new ActionBarDrawerToggle(getActivity(), drawerLayout, R.string.drawer_open, R.string.drawer_close);
         drawerLayout.addDrawerListener(drawerToggle);
 
 
-        floatingActionButton.setOnClickListener(v -> drawerLayout.openDrawer(Gravity.START));
+        floatingActionButton.setOnClickListener((View v) -> drawerLayout.openDrawer(Gravity.START));
 
-        btnAnniversaryFragment.setOnClickListener(v -> {
+        btnAnniversaryFragment.setOnClickListener((View v) -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
             // Get the layout inflater
@@ -63,7 +64,7 @@ public class AnniversaryFragment extends Fragment {
 
             // Inflate and set the layout for the dialog
             // Pass null as the parent view because its going in the dialog layout
-            builder.setView(inflater1.inflate(R.layout.customalert3, null))
+            builder.setView(inflater1.inflate(R.layout.customer_alert3, null))
                     // Add action buttons
                     .setPositiveButton("Ok", (DialogInterface dialog, int id) -> {
                         // sign in the user ...

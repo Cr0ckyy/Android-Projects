@@ -68,6 +68,17 @@
         <entry key="..\:/C346/Workspace/P01/Android-Projects/C347_L9_PS_Getting_My_Location/src/main/res/layout/activity_main.xml" value="0.2115036231884058" />
         <entry key="..\:/C346/Workspace/P01/Android-Projects/L8_PS_Locating_A_Place/src/main/res/layout/activity_main.xml" value="0.20471014492753623" />
         <entry key="..\:/C346/Workspace/P01/Android-Projects/c347_l1_ex2demo_imageview/src/main/res/layout/activity_main.xml" value="0.35260416666666666" />
+        <entry key="..\:/C346/Workspace/P01/Combined_Android_Projects/C302_P06_PS_Sakila_Client/src/main/res/layout/activity_category_summary.xml" value="0.33" />
+        <entry key="..\:/C346/Workspace/P01/Combined_Android_Projects/C302_P06_PS_Sakila_Client/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/C346/Workspace/P01/Combined_Android_Projects/C302_P06_PS_Sakila_Client/src/main/res/layout/activity_search_films.xml" value="0.25" />
+        <entry key="..\:/C346/Workspace/P01/Combined_Android_Projects/C302_P06_PS_Sakila_Client/src/main/res/menu/menu.xml" value="0.36666666666666664" />
+        <entry key="..\:/C346/Workspace/P01/Combined_Android_Projects/C302_P07_PS_Address_Book/src/main/res/layout/activity_create_contact.xml" value="0.2441123188405797" />
+        <entry key="..\:/C346/Workspace/P01/Combined_Android_Projects/C302_P07_PS_Address_Book/src/main/res/layout/activity_edit_contact_details.xml" value="0.2441123188405797" />
+        <entry key="..\:/C346/Workspace/P01/Combined_Android_Projects/C302_P07_PS_Address_Book/src/main/res/layout/activity_main.xml" value="0.2441123188405797" />
+        <entry key="..\:/C346/Workspace/P01/Combined_Android_Projects/C302_P07_PS_Address_Book/src/main/res/layout/activity_view_contact_details.xml" value="0.2441123188405797" />
+        <entry key="..\:/C346/Workspace/P01/Combined_Android_Projects/C302_P07_PS_Address_Book/src/main/res/layout/contact_row.xml" value="0.2441123188405797" />
+        <entry key="..\:/C346/Workspace/P01/Combined_Android_Projects/C347_L11_EX1_Demo_AlarmManager/src/main/res/layout/activity_main.xml" value="0.2817028985507246" />
+        <entry key="..\:/C346/Workspace/P01/Combined_Android_Projects/C347_L11_EX2_Demo_Notification/src/main/res/layout/activity_main.xml" value="0.2817028985507246" />
         <entry key="..\:/C346/Workspace/P01/Combined_Android_Projects/C347_L2_EX1_Demo_Explicit_Intent/src/main/res/layout/activity_hero_stats.xml" value="0.2866847826086957" />
         <entry key="..\:/C346/Workspace/P01/Combined_Android_Projects/C347_L2_EX2_Demo_Implicit_Intent/src/main/res/layout/activity_main.xml" value="0.2866847826086957" />
         <entry key="..\:/C346/Workspace/P01/Combined_Android_Projects/C347_L4_PS_NDP_Songs/src/main/res/layout/activity_main.xml" value="0.20520833333333333" />
@@ -84,6 +95,9 @@
         <entry key="..\:/C346/Workspace/P01/Combined_Android_Projects/C347_L5_PS_SMS_Retriever/src/main/res/layout-land/activity_main.xml" value="0.31040564373897706" />
         <entry key="..\:/C346/Workspace/P01/Combined_Android_Projects/C347_L5_PS_SMS_Retriever/src/main/res/layout/fragment_first.xml" value="0.1707193515704154" />
         <entry key="..\:/C346/Workspace/P01/Combined_Android_Projects/C347_L5_PS_SMS_Retriever/src/main/res/layout/fragment_second.xml" value="0.2866847826086957" />
+        <entry key="..\:/C346/Workspace/P01/Combined_Android_Projects/C347_L6_EX2_Demo_Swiper/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/C346/Workspace/P01/Combined_Android_Projects/C347_L6_EX2_Demo_Swiper/src/main/res/layout/fragment_frag1.xml" value="0.1" />
+        <entry key="..\:/C346/Workspace/P01/Combined_Android_Projects/C347_L6_EX2_Demo_Swiper/src/main/res/layout/fragment_frag2.xml" value="0.1" />
         <entry key="..\:/C346/Workspace/P01/Combined_Android_Projects/C347_L6_PS_Know_Your_Facts/src/main/res/layout/activity_main.xml" value="0.23097826086956522" />
         <entry key="..\:/C346/Workspace/P01/Combined_Android_Projects/C347_L6_PS_Know_Your_Facts/src/main/res/layout/fragment_1.xml" value="0.23097826086956522" />
         <entry key="..\:/C346/Workspace/P01/Combined_Android_Projects/C347_L6_PS_Know_Your_Facts/src/main/res/layout/fragment_2.xml" value="0.23097826086956522" />
@@ -93,6 +107,11 @@
         <entry key="..\:/C346/Workspace/P01/Combined_Android_Projects/C347_L7_EX1_Demo_CoolDrawer/src/main/res/layout/fragment_biography.xml" value="0.23097826086956522" />
         <entry key="..\:/C346/Workspace/P01/Combined_Android_Projects/C347_L7_EX1_Demo_CoolDrawer/src/main/res/layout/fragment_vaccination.xml" value="0.23097826086956522" />
         <entry key="..\:/C346/Workspace/P01/Combined_Android_Projects/C347_L7_PS_My_Data_Book/src/main/res/layout/activity_about.xml" value="0.23097826086956522" />
+        <entry key="..\:/C346/Workspace/P01/Combined_Android_Projects/C347_L7_PS_My_Data_Book/src/main/res/layout/activity_main.xml" value="0.2817028985507246" />
+        <entry key="..\:/C346/Workspace/P01/Combined_Android_Projects/C347_L7_PS_My_Data_Book/src/main/res/layout/anniversaryfragment.xml" value="0.1393110435663627" />
+        <entry key="..\:/C346/Workspace/P01/Combined_Android_Projects/C347_L7_PS_My_Data_Book/src/main/res/layout/biofragment.xml" value="0.2817028985507246" />
+        <entry key="..\:/C346/Workspace/P01/Combined_Android_Projects/C347_L7_PS_My_Data_Book/src/main/res/layout/customalert.xml" value="0.2817028985507246" />
+        <entry key="..\:/C346/Workspace/P01/Combined_Android_Projects/C347_L7_PS_My_Data_Book/src/main/res/menu/drawermenu.xml" value="0.2864583333333333" />
       </map>
     </option>
   </component>

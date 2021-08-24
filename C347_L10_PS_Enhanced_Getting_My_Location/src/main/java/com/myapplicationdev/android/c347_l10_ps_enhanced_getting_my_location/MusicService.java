@@ -9,8 +9,10 @@ import android.os.IBinder;
 import java.io.File;
 
 public class MusicService extends Service {
+
     MediaPlayer player = new MediaPlayer();
 
+    // TODO: Empty Constructor is needed for Service
     public MusicService() {
     }
 

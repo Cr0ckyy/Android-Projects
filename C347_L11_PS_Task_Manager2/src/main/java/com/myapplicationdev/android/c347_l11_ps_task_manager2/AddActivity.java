@@ -52,13 +52,15 @@ public class AddActivity extends AppCompatActivity {
 
                 @SuppressLint("UnspecifiedImmutableFlag") PendingIntent pendingIntent =
                         PendingIntent.getBroadcast(
-                        AddActivity.this, requestCode,
-                        intent, PendingIntent.FLAG_CANCEL_CURRENT);
+                                AddActivity.this, requestCode,
+                                intent, PendingIntent.FLAG_CANCEL_CURRENT);
 
-                AlarmManager am = (AlarmManager)
-                        getSystemService(AddActivity.ALARM_SERVICE);
-                am.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(),
-                        pendingIntent);
+                AlarmManager alarmManager = (AlarmManager) getSystemService(AddActivity.ALARM_SERVICE);
+                alarmManager.set(
+                        AlarmManager.RTC_WAKEUP,
+                        cal.getTimeInMillis(),
+                        pendingIntent
+                );
 
                 finish();
             }

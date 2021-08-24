@@ -16,6 +16,7 @@ public class NewActivity extends AppCompatActivity {
 
         actionBar = getSupportActionBar();
         assert actionBar != null;
+        // TODO: enable "Return arrow" function in ActionBar
         actionBar.setDisplayHomeAsUpEnabled(true);
     }
 }

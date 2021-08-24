@@ -1,5 +1,7 @@
 package com.myapplicationdev.android.c347_l6_ex2_demo_swiper;
 
+import android.annotation.SuppressLint;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -19,10 +21,12 @@ public class MyFragmentPagerAdapter extends FragmentPagerAdapter {
     ArrayList<Fragment> fragments;
 
     //  TODO:  Retrieve  FragmentManager  in argument and collection of  Fragments (ArrayList) in argument
+    @SuppressLint("WrongConstant")
     public MyFragmentPagerAdapter(FragmentManager fm, ArrayList<Fragment> al) {
         super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         fragments = al;
     }
+
     @Override
     @NonNull
     //  TODO: ViewPager will call  getItem() to request for  fragment for screen at the  position
