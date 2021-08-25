@@ -15,6 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Combined_Android_Projects"
         tools:ignore="AllowBackup">
+
         <activity
             android:name=".LoginActivity"
             android:exported="true">

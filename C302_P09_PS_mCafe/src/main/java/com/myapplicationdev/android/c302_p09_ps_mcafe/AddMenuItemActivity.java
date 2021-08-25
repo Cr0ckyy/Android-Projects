@@ -22,9 +22,9 @@ import cz.msebera.android.httpclient.Header;
 
 public class AddMenuItemActivity extends AppCompatActivity {
 
-     String loginId, apikey, categoryId;
-     EditText etItem, etPrice;
-     Button btnAdd;
+    String loginId, apikey, categoryId;
+    EditText etItem, etPrice;
+    Button btnAdd;
 
 
     @Override
@@ -46,13 +46,13 @@ public class AddMenuItemActivity extends AppCompatActivity {
             String etPriceVal = etPrice.getText().toString().trim();
 
             // Check for any empty fields
-            if(item.length() == 0){
+            if (item.length() == 0) {
                 Toast.makeText(AddMenuItemActivity.this, "Item name cannot be blank.", Toast.LENGTH_SHORT).show();
 
-            }else if(etPriceVal.length() == 0){
+            } else if (etPriceVal.length() == 0) {
                 Toast.makeText(AddMenuItemActivity.this, "Price cannot be blank.", Toast.LENGTH_SHORT).show();
 
-            }else{
+            } else {
 
                 // If no empty fields, proceed to add
                 Double price = Double.parseDouble(etPriceVal);

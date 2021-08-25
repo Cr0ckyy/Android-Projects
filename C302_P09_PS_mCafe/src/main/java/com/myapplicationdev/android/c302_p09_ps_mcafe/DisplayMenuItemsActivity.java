@@ -90,10 +90,15 @@ public class DisplayMenuItemsActivity extends AppCompatActivity {
                         JSONObject category = (JSONObject) response.get(i);
                         String id = category.getString("menu_item_id");
                         String description = category.getString("menu_item_description");
-                        Double unitPrice = category.getDouble("menu_item_unit_price");
+                        double unitPrice = category.getDouble("menu_item_unit_price");
 
-                        MenuCategoryItem c = new MenuCategoryItem(id, categoryId, description, unitPrice);
-                        alCatItem.add(c);
+                        MenuCategoryItem menuCategoryItem = new MenuCategoryItem(
+                                id,
+                                categoryId,
+                                description,
+                                unitPrice
+                        );
+                        alCatItem.add(menuCategoryItem);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
