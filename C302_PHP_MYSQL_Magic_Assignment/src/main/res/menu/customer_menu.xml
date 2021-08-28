@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <item
+        android:id="@+id/menuItemCardsByColour"
+        android:title="Cards by Colour"
+        tools:ignore="HardcodedText" />
+
+    <item
+        android:id="@+id/menuItemLogout"
+        android:title="Logout"
+        tools:ignore="HardcodedText" />
+</menu>

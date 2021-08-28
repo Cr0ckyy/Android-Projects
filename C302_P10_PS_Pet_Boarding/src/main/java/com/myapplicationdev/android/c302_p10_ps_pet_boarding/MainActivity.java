@@ -1,7 +1,6 @@
 package com.myapplicationdev.android.c302_p10_ps_pet_boarding;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -9,66 +8,123 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.github.florent37.singledateandtimepicker.dialog.SingleDateAndTimePickerDialog;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
-    private EditText etName, etNumOfDays, etBoardingDate;
-    private Spinner spinAnimal;
-    private CheckBox checkVacc;
-    private Button btnRequest;
-
-
-    private FirebaseFirestore db;
-    private CollectionReference colRef;
-    private DocumentReference docRef;
+    TextView textViewFirebaseOutput;
+    Button btnSend;
+    EditText etName, etNumberOfDays, etBoardingDate;
+    Spinner petTypeSpinner;
+    CheckBox cbHasBeenVaccinated;
+    Date selectedDate;
+    String[] petTypes;
+    ArrayAdapter<String> adapter;
+    FirebaseFirestore firebaseFirestore;
+    CollectionReference collectionReference;
+    DocumentReference documentReference;
+    static Pet myPet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        textViewFirebaseOutput = findViewById(R.id.textViewFirebaseOutput);
         etName = findViewById(R.id.etName);
-        etNumOfDays = findViewById(R.id.etNumOfDays);
+        etNumberOfDays = findViewById(R.id.etNumberOfDays);
+        petTypeSpinner = findViewById(R.id.spPetType);
         etBoardingDate = findViewById(R.id.etBoardingDate);
-        spinAnimal = findViewById(R.id.spinAnimal);
-        checkVacc = findViewById(R.id.checkVacc);
+        cbHasBeenVaccinated = findViewById(R.id.cbHasBeenVaccinated);
+        btnSend = findViewById(R.id.btnSend);
 
-        btnRequest = findViewById(R.id.btnRequest);
+        //TODO: Setting array, then adding data to adapter, then setting petTypeSpinner
+        petTypes = new String[]{"cat", "dog", "cow"};
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, petTypes);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        petTypeSpinner.setAdapter(adapter);
 
-        // Set the spinner for the animal the user selects
-        ArrayAdapter<String> animalAdapter = new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.animals));
-        animalAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinAnimal.setAdapter(animalAdapter);
+        // TODO: getting fireStore collection & document References
+        firebaseFirestore = FirebaseFirestore.getInstance();
+        collectionReference = firebaseFirestore.collection("PetBoardings");
+        documentReference = collectionReference.document("Pet");
 
-        db = FirebaseFirestore.getInstance();
-        colRef = db.collection("PetBoardings");
-        docRef = colRef.document("PetBoarding");
-
-
-        btnRequest.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                btnAddOnClick(v);
+        // TODO: adding data into fireStore
+        documentReference.addSnapshotListener((DocumentSnapshot value, FirebaseFirestoreException error) -> {
+            if (error != null) {
+                error.printStackTrace();
+                return;
             }
+
+            if (value != null && value.exists()) {
+                // Returns the document's POJO content/null if the document doesn't exist.
+                myPet = value.toObject(Pet.class);
+                assert myPet != null;
+                @SuppressLint("DefaultLocale") String myFirebaseOutput = String.format("" +
+                                "Name: %s\n" +
+                                "Number of days: %d\n" +
+                                "Pet Type: %s\n" +
+                                "Has been vaccinated: %b\n" +
+                                "Selected Date: %s\n",
+                        myPet.getName(),
+                        myPet.getNumDays(),
+                        myPet.getPetType(),
+                        myPet.isVaccinated(),
+                        myPet.getBoardDate()
+
+                );
+                textViewFirebaseOutput.setText(myFirebaseOutput);
+            } else {
+                Toast.makeText(getApplicationContext(),
+                        "The value provided by Firebase Firestore is null and void."
+                        , Toast.LENGTH_SHORT).show();
+            }
+
+
         });
+        // TODO: DatePicker Dialog set up
+        SingleDateAndTimePickerDialog.Builder dialogDatePicker = new SingleDateAndTimePickerDialog.Builder(this)
+                .bottomSheet()
+                .curved()
+                .displayMinutes(true)
+                .displayHours(true)
+                .displayDays(false)
+                .displayMonth(true)
+                .displayYears(true)
+                .displayDaysOfMonth(true)
+                .title("Boarding Date") // dialogDatePicker title
+                .listener((Date date) -> {
+                    selectedDate = date;
+                    etBoardingDate.setText(selectedDate.toString());
+                });
+        etBoardingDate.setOnClickListener((View v) -> dialogDatePicker.display());
 
-
+        btnSend.setOnClickListener(this::sendOnClick);
     }
 
-    private void btnAddOnClick(View v) {
-        String name = etName.getText().toString();
-        int numOfDays = Integer.parseInt(etNumOfDays.getText().toString());
-        String boardingDate = etBoardingDate.getText().toString();
-        String selectedAnimal = spinAnimal.getSelectedItem().toString();
-        boolean vaccinated = checkVacc.isChecked();
+    void sendOnClick(View v) {
 
-        PetBoarding pb = new PetBoarding(boardingDate, name, numOfDays, selectedAnimal, vaccinated);
-        docRef.set(pb);
+        // TODO: setting data for FireStore DocumentReference to add data
+        Pet pet = new Pet(
+                etName.getText().toString(),
+                Integer.parseInt(etNumberOfDays.getText().toString()),
+                petTypes[petTypeSpinner.getSelectedItemPosition()],
+                selectedDate,
+                cbHasBeenVaccinated.isChecked()
+        );
+        documentReference.set(pet);
 
     }
 }

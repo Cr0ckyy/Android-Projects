@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">C302_P10_PS_Pet_Boarding</string>
+
+    <string-array name="animals">
+        <item>Dugon</item>
+        <item>Dog</item>
+        <item>Cat</item>
+        <item>Fish</item>
+    </string-array>
+
 </resources>

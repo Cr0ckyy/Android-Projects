@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -56,6 +57,10 @@ public class MainActivity extends AppCompatActivity {
                 assert msg != null;
                 tvTitle.setText(msg.getTitle());
                 tvDate.setText(msg.getDate());
+            } else {
+                Toast.makeText(getApplicationContext(),
+                        "The value provided by Firebase Firestore is null and void."
+                        , Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -64,9 +69,14 @@ public class MainActivity extends AppCompatActivity {
         String text = etTitle.getText().toString();
         String date = etDate.getText().toString();
 
-        Date msg = new Date(text, date);
         // TODO: setting data for FireStore DocumentReference to add data
-        documentReference.set(msg);
+        Date sentDate = new Date(text, date);
+        documentReference.set(sentDate);
+        String toastMsg = String.format("\n" +
+                "The data to write to the document: %s", documentReference.set(sentDate));
+        Toast.makeText(getApplicationContext(),
+                toastMsg
+                , Toast.LENGTH_SHORT).show();
 
     }
 }

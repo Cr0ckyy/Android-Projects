@@ -1,55 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
     android:orientation="vertical"
-    android:layout_margin="10dp">
-
+    android:padding="20dp"
+    tools:context=".MainActivity">
     <TextView
+        android:id="@+id/textViewFirebaseOutput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingBottom="50dp"
+        android:text="textViewFirebaseOutput"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="25dp" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:text="Pet Boarding"
-        android:textSize="30dp"/>
+        android:textColor="@color/black"
+        android:textSize="30dp" />
 
     <EditText
         android:id="@+id/etName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Name"/>
+        android:hint="Name"
+        android:inputType="textPersonName" />
 
     <EditText
-        android:id="@+id/etNumOfDays"
+        android:id="@+id/etNumberOfDays"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Number of days"/>
+        android:hint="Number of Days"
+        android:inputType="number" />
 
     <Spinner
-        android:id="@+id/spinAnimal"
+        android:id="@+id/spPetType"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
 
     <EditText
         android:id="@+id/etBoardingDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Boarding date"/>
+        android:focusable="false"
+        android:hint="Boarding Date"
+        android:inputType="datetime" />
 
     <CheckBox
-        android:id="@+id/checkVacc"
+        android:id="@+id/cbHasBeenVaccinated"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Is pet vaccinated?"/>
+        android:text="Is pet vaccinated?" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnRequest"
+    <Button
+        android:id="@+id/btnSend"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Send Request"/>
-
-
-
-
+        android:text="send request" />
 </LinearLayout>
