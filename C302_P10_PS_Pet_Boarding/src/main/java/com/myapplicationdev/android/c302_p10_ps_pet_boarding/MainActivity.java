@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     Date selectedDate;
     String[] petTypes;
     ArrayAdapter<String> adapter;
-    FirebaseFirestore firebaseFirestore;
+    FirebaseFirestore fireStore;
     CollectionReference collectionReference;
     DocumentReference documentReference;
     static Pet myPet;
@@ -57,8 +57,8 @@ public class MainActivity extends AppCompatActivity {
         petTypeSpinner.setAdapter(adapter);
 
         // TODO: getting fireStore collection & document References
-        firebaseFirestore = FirebaseFirestore.getInstance();
-        collectionReference = firebaseFirestore.collection("PetBoardings");
+        fireStore = FirebaseFirestore.getInstance();
+        collectionReference = fireStore.collection("PetBoardings");
         documentReference = collectionReference.document("Pet");
 
         // TODO: adding data into fireStore

@@ -90,7 +90,14 @@
         <entry key="..\:/C346/Workspace/P01/Combined_Android_Projects/C302_P09_PS_mCafe/src/main/res/menu/main.xml" value="0.36666666666666664" />
         <entry key="..\:/C346/Workspace/P01/Combined_Android_Projects/C302_P10_EX1_Firebase_Hello_World/src/main/res/layout/activity_main.xml" value="0.2246376811594203" />
         <entry key="..\:/C346/Workspace/P01/Combined_Android_Projects/C302_P10_PS_Pet_Boarding/src/main/res/layout/activity_main.xml" value="0.2246376811594203" />
+        <entry key="..\:/C346/Workspace/P01/Combined_Android_Projects/C302_P11_EX1_Firebase_Student_App/src/main/res/layout/activity_main.xml" value="0.16666666666666666" />
+        <entry key="..\:/C346/Workspace/P01/Combined_Android_Projects/C302_P11_PS_Firebase_Inventory_App/src/main/res/layout/activity_student_details.xml" value="0.33469202898550726" />
+        <entry key="..\:/C346/Workspace/P01/Combined_Android_Projects/C302_P11_PS_Firebase_Inventory_App/src/main/res/menu/menu_main.xml" value="0.2234375" />
+        <entry key="..\:/C346/Workspace/P01/Combined_Android_Projects/C302_P12_PS_DataMall_Traffic_Incidents/src/main/res/drawable/chart.xml" value="0.23958333333333334" />
         <entry key="..\:/C346/Workspace/P01/Combined_Android_Projects/C302_P12_PS_DataMall_Traffic_Incidents/src/main/res/layout/activity_chart.xml" value="0.18297101449275363" />
+        <entry key="..\:/C346/Workspace/P01/Combined_Android_Projects/C302_P12_PS_DataMall_Traffic_Incidents/src/main/res/layout/activity_main.xml" value="0.18297101449275363" />
+        <entry key="..\:/C346/Workspace/P01/Combined_Android_Projects/C302_P12_PS_DataMall_Traffic_Incidents/src/main/res/layout/activity_maps.xml" value="0.18297101449275363" />
+        <entry key="..\:/C346/Workspace/P01/Combined_Android_Projects/C302_P12_PS_DataMall_Traffic_Incidents/src/main/res/layout/incident_row.xml" value="0.2234375" />
         <entry key="..\:/C346/Workspace/P01/Combined_Android_Projects/C302_P12_PS_DataMall_Traffic_Incidents/src/main/res/menu/menu_main.xml" value="0.27708333333333335" />
         <entry key="..\:/C346/Workspace/P01/Combined_Android_Projects/C302_P12_PS_Traffic_Incidents/src/main/res/drawable/map.xml" value="0.3828125" />
         <entry key="..\:/C346/Workspace/P01/Combined_Android_Projects/C302_P12_PS_Traffic_Incidents/src/main/res/layout/activity_chart.xml" value="0.17831813576494426" />
@@ -100,6 +107,9 @@
         <entry key="..\:/C346/Workspace/P01/Combined_Android_Projects/C302_PHP_MYSQL_Magic_Assignment/src/main/res/layout/activity_show_card.xml" value="0.21829710144927536" />
         <entry key="..\:/C346/Workspace/P01/Combined_Android_Projects/C302_PHP_MYSQL_Magic_Assignment/src/main/res/layout/card_row.xml" value="0.21829710144927536" />
         <entry key="..\:/C346/Workspace/P01/Combined_Android_Projects/C302_PHP_MYSQL_Magic_Assignment/src/main/res/menu/admin_menu.xml" value="0.36666666666666664" />
+        <entry key="..\:/C346/Workspace/P01/Combined_Android_Projects/C347_L10_PS_Enhanced_Getting_My_Location/src/main/res/layout/activity_main.xml" value="0.2234375" />
+        <entry key="..\:/C346/Workspace/P01/Combined_Android_Projects/C347_L10_PS_Enhanced_Getting_My_Location/src/main/res/layout/incident_row.xml" value="0.2234375" />
+        <entry key="..\:/C346/Workspace/P01/Combined_Android_Projects/C347_L10_PS_Enhanced_Getting_My_Location/src/main/res/menu/menu_main.xml" value="0.2234375" />
         <entry key="..\:/C346/Workspace/P01/Combined_Android_Projects/C347_L11_EX1_Demo_AlarmManager/src/main/res/layout/activity_main.xml" value="0.2817028985507246" />
         <entry key="..\:/C346/Workspace/P01/Combined_Android_Projects/C347_L11_EX2_Demo_Notification/src/main/res/layout/activity_main.xml" value="0.2817028985507246" />
         <entry key="..\:/C346/Workspace/P01/Combined_Android_Projects/C347_L2_EX1_Demo_Explicit_Intent/src/main/res/layout/activity_hero_stats.xml" value="0.2866847826086957" />
