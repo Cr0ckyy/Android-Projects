@@ -1,8 +1,8 @@
 package com.myapplicationdev.android.c302_p11_ex1_firebase_student_app;
 
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
-import static org.junit.Assert.*;
+import org.junit.Test;
 
 /**
  * Example local unit test, which will execute on the development machine (host).

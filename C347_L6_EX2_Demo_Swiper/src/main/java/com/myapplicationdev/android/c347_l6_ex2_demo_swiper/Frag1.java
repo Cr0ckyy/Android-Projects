@@ -1,12 +1,11 @@
 package com.myapplicationdev.android.c347_l6_ex2_demo_swiper;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.fragment.app.Fragment;
 
 
 public class Frag1 extends Fragment {

@@ -3,7 +3,6 @@ package com.myapplicationdev.android.c347_l10_ex2_demo_music_player;
 import android.app.Service;
 import android.content.Intent;
 import android.media.MediaPlayer;
-import android.nfc.Tag;
 import android.os.Environment;
 import android.os.IBinder;
 import android.util.Log;
@@ -12,10 +11,10 @@ import java.io.File;
 
 public class MusicService extends Service {
 
+    static final String TAG = "MusicService";
     // declaring object of MediaPlayer
     MediaPlayer player = new MediaPlayer();
     boolean started;
-    static final String TAG = "MusicService";
 
     @Override
     // TODO: Return the communication channel to the service.

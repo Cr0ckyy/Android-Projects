@@ -20,13 +20,13 @@
         android:orientation="horizontal">
 
         <TextView
-            android:textColor="@color/black"
-            android:textStyle="bold"
             android:id="@+id/tvCategoryName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/category" />
+            android:text="@string/category"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tvCategoryCount"

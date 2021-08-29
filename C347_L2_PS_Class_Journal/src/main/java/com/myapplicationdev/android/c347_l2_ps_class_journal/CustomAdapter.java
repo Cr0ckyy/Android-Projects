@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class CustomAdapter extends ArrayAdapter<Module>{
+public class CustomAdapter extends ArrayAdapter<Module> {
     //---------------------Initial Setting--------------
     private ArrayList<Module> module;
     private Context context;
@@ -23,7 +23,7 @@ public class CustomAdapter extends ArrayAdapter<Module>{
 
 
     //---------------------Inflate--------------
-    public CustomAdapter(Context context, int resource, ArrayList<Module> objects){
+    public CustomAdapter(Context context, int resource, ArrayList<Module> objects) {
         super(context, resource, objects);
         // Store the food that is passed to this adapter
         module = objects;
@@ -31,7 +31,6 @@ public class CustomAdapter extends ArrayAdapter<Module>{
         this.context = context;
     }
     //---------------------Inflate--------------
-
 
 
     // getView() is the method ListView will call to get the
@@ -61,7 +60,7 @@ public class CustomAdapter extends ArrayAdapter<Module>{
         Module currModule = module.get(position);
 
         int weekNow = currModule.getModuleWeek();
-        moduleWeek.setText("Week "+weekNow);
+        moduleWeek.setText("Week " + weekNow);
         moduleDG.setText("DG");
 
 

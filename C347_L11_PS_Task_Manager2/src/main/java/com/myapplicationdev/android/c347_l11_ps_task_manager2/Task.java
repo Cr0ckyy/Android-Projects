@@ -20,26 +20,25 @@ class Task implements Serializable {
         return name;
     }
 
-    public int getId() {
-        return id;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getDesc() {
-        return desc;
+    public int getId() {
+        return id;
     }
 
     public void setId(int id) {
         this.id = id;
     }
 
+    public String getDesc() {
+        return desc;
+    }
+
     public void setDesc(String desc) {
         this.desc = desc;
     }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
 
     @NonNull
     @Override

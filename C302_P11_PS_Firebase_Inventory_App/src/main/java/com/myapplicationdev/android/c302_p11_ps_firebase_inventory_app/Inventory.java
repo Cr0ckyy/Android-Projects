@@ -8,12 +8,13 @@ import java.io.Serializable;
 
 public class Inventory implements Serializable {
 
-    @Exclude private String id;
+    @Exclude
+    private String id;
     private String itemName;
     private int unitCost;
 
     // TODO: need an empty Constructor for for calls to snapshot.toObject(Inventory.class)
-    public Inventory(){
+    public Inventory() {
     }
 
     public Inventory(String id, String itemName, int unitCost) {

@@ -9,10 +9,10 @@
     tools:context=".MainActivity">
 
     <com.jsibbold.zoomage.ZoomageView
-        android:background="#808080"
         android:id="@+id/zoomageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#808080"
         app:zoomage_animateOnReset="true"
         app:zoomage_autoCenter="true"
         app:zoomage_autoResetMode="UNDER"

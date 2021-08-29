@@ -1,17 +1,16 @@
 package com.myapplicationdev.android.c302_p09_ps_mcafe;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -27,17 +26,15 @@ import cz.msebera.android.httpclient.Header;
 
 public class DisplayMenuItemsActivity extends AppCompatActivity {
 
+    // Set up sharedPreferences
+    public static final String SHARED_PREFS = "sharedPrefs";
     ListView lvCatItem;
     ArrayList<MenuCategoryItem> alCatItem;
     ArrayAdapter<MenuCategoryItem> aaCatItem;
-
     // Init variables for login credentials
     String loginId;
     String apikey;
     String categoryId;
-
-    // Set up sharedPreferences
-    public static final String SHARED_PREFS = "sharedPrefs";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

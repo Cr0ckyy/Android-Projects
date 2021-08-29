@@ -18,16 +18,17 @@ public class Module {
     public int getModuleWeek() {
         return moduleWeek;
     }
-    public String getModuleGrade() {
-        return moduleGrade;
-    }
-    //---------------------Getter--------------
-
 
     //---------------------Setter--------------
     public void setModuleWeek(int moduleWeek) {
         this.moduleWeek = moduleWeek;
     }
+    //---------------------Getter--------------
+
+    public String getModuleGrade() {
+        return moduleGrade;
+    }
+
     public void setModuleGrade(String moduleGrade) {
         this.moduleGrade = moduleGrade;
     }

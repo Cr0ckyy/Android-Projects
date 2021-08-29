@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String selectedModule = al.get(i);
                 Intent intent = new Intent(MainActivity.this, InfoMainScreen.class);
-                intent.putExtra("module",selectedModule);
+                intent.putExtra("module", selectedModule);
                 startActivity(intent);
             }
         });

@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
@@ -21,11 +20,10 @@ import java.util.List;
 import java.util.Random;
 
 public class Fragment3 extends Fragment implements RssReader.RssCallback {
+    static final String TAG = "Fragment3";
     Button btnChangeColor;
     TextView tvRSS;
     RssReader rssReader;
-    static final String TAG = "Fragment3";
-
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override

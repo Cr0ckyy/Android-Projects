@@ -16,7 +16,7 @@ public class SongAdapter extends ArrayAdapter<Song> {
     ArrayList<Song> songs;
     int resource;
     ImageView iv1, iv2, iv3, iv4, iv5;
-    TextView tvSinger,tvYear,tvTitle;
+    TextView tvSinger, tvYear, tvTitle;
 
     public SongAdapter(Context context, int resource, ArrayList<Song> songs) {
         super(context, resource, songs);
@@ -37,11 +37,11 @@ public class SongAdapter extends ArrayAdapter<Song> {
         tvYear = rowView.findViewById(R.id.textViewYear);
         tvTitle = rowView.findViewById(R.id.textViewTitle);
 
-        iv1=  rowView.findViewById(R.id.imageView1star);
-        iv2=  rowView.findViewById(R.id.imageView2star);
-        iv3=  rowView.findViewById(R.id.imageView3star);
-        iv4=  rowView.findViewById(R.id.imageView4star);
-        iv5=  rowView.findViewById(R.id.imageView5star);
+        iv1 = rowView.findViewById(R.id.imageView1star);
+        iv2 = rowView.findViewById(R.id.imageView2star);
+        iv3 = rowView.findViewById(R.id.imageView3star);
+        iv4 = rowView.findViewById(R.id.imageView4star);
+        iv5 = rowView.findViewById(R.id.imageView5star);
 
         Song note = songs.get(position);
         int stars = note.getStars();
@@ -50,7 +50,7 @@ public class SongAdapter extends ArrayAdapter<Song> {
         int year = note.getYear();
         String title = note.getTitle();
         tvSinger.setText(singer);
-        tvYear.setText(""+year);
+        tvYear.setText("" + year);
         tvTitle.setText(title);
 
         //Check if the property for starts >= 5, if so, "light" up the stars
@@ -60,20 +60,16 @@ public class SongAdapter extends ArrayAdapter<Song> {
             iv3.setImageResource(android.R.drawable.btn_star_big_on);
             iv2.setImageResource(android.R.drawable.btn_star_big_on);
             iv1.setImageResource(android.R.drawable.btn_star_big_on);
-        }
-        else if (stars == 1){
+        } else if (stars == 1) {
             iv1.setImageResource(android.R.drawable.btn_star_big_on);
-        }
-        else if (stars == 2){
+        } else if (stars == 2) {
             iv2.setImageResource(android.R.drawable.btn_star_big_on);
             iv1.setImageResource(android.R.drawable.btn_star_big_on);
-        }
-        else if (stars == 3){
+        } else if (stars == 3) {
             iv3.setImageResource(android.R.drawable.btn_star_big_on);
             iv2.setImageResource(android.R.drawable.btn_star_big_on);
             iv1.setImageResource(android.R.drawable.btn_star_big_on);
-        }
-        else if (stars == 4 ){
+        } else if (stars == 4) {
             iv4.setImageResource(android.R.drawable.btn_star_big_on);
             iv3.setImageResource(android.R.drawable.btn_star_big_on);
             iv2.setImageResource(android.R.drawable.btn_star_big_on);
@@ -82,7 +78,6 @@ public class SongAdapter extends ArrayAdapter<Song> {
 
         return rowView;
     }
-
 
 
 }

@@ -18,7 +18,6 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.myapplicationdev.android.c302_p12_ps_datamall_traffic_incidents.databinding.ActivityMapsBinding;
 
-
 import java.util.Objects;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {

@@ -31,15 +31,12 @@ import cz.msebera.android.httpclient.Header;
 
 public class CreateCardActivity_19039480 extends AppCompatActivity {
     public static final String TAG = CreateCardActivity_19039480.class.getName();
-
-    EditText etName, etColour, etType, etPrice, etQuantity;
-    Button btnAdd;
-
-    // TODO (3) Declare loginId and apikey
-    String loginId, apikey;
-
     // TODO: declare sharedPreferences that can be used to pass user data around the application
     static final String SHARED_PREFERENCES = "sharedPreferences";
+    EditText etName, etColour, etType, etPrice, etQuantity;
+    Button btnAdd;
+    // TODO (3) Declare loginId and apikey
+    String loginId, apikey;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

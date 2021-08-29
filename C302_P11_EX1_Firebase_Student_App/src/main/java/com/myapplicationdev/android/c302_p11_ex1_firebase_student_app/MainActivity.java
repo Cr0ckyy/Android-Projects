@@ -24,16 +24,16 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-     static final String TAG = "MainActivity";
-     ListView lvStudent;
-     ArrayList<Student> alStudent;
-     ArrayAdapter<Student> aaStudent;
+    static final String TAG = "MainActivity";
+    ListView lvStudent;
+    ArrayList<Student> alStudent;
+    ArrayAdapter<Student> aaStudent;
 
     // TODO: Task 1 - Declare Firebase variables
 
-     FirebaseFirestore db;
-     CollectionReference colRef;
-     DocumentReference docRef;
+    FirebaseFirestore db;
+    CollectionReference colRef;
+    DocumentReference docRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,18 +66,18 @@ public class MainActivity extends AppCompatActivity {
         //TODO: Task 4: Read from Snapshot and add into ArrayAdapter for ListView
         colRef.addSnapshotListener((QuerySnapshot querySnapshot, FirebaseFirestoreException e) -> {
             if (e != null) {
-                        System.err.println("Listen failed:" + e);
-                        return;
+                System.err.println("Listen failed:" + e);
+                return;
             }
             alStudent.clear();
             assert querySnapshot != null;
             for (DocumentSnapshot doc : querySnapshot) {
-                        if (doc.get("name") != null && doc.get("age") != null) {
-                            Student student = new Student(doc.getString("name"), Integer.parseInt(doc.getLong("age").toString()));
-                            student.setId(doc.getId());
-                            alStudent.add(student);
-                        }
-                    }
+                if (doc.get("name") != null && doc.get("age") != null) {
+                    Student student = new Student(doc.getString("name"), Integer.parseInt(doc.getLong("age").toString()));
+                    student.setId(doc.getId());
+                    alStudent.add(student);
+                }
+            }
             Log.d("hi", alStudent.toString());
             aaStudent.notifyDataSetChanged();
         });

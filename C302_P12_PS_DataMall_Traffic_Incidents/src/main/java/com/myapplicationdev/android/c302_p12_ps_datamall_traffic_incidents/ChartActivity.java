@@ -27,8 +27,8 @@ import java.util.Objects;
 
 public class ChartActivity extends AppCompatActivity {
 
-    FirebaseFirestore fireStore;
     final String TAG = "ChartActivity";
+    FirebaseFirestore fireStore;
     AnyChartView anyChartView;
     ArrayList<DataEntry> data;
     Cartesian vertical;
@@ -67,7 +67,6 @@ public class ChartActivity extends AppCompatActivity {
                                 incidents.put(type, value);
                             }
                         }
-
 
                         for (String key : incidents.keySet()) {
                             data.add(new CustomDataEntry(key, incidents.get(key)));

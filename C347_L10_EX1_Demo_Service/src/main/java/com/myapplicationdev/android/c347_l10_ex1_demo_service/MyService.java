@@ -8,8 +8,8 @@ import android.util.Log;
 
 public class MyService extends Service {
 
-    boolean started;
     final DownloadBinder downloadBinder = new DownloadBinder();
+    boolean started;
 
     @Override
     // TODO: Return the communication channel

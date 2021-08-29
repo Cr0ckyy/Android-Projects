@@ -9,15 +9,6 @@ public class Date implements Serializable {
     private String title;
     private String date;
 
-    @NonNull
-    @Override
-    public String toString() {
-        return "Date{" +
-                "text='" + title + '\'' +
-                ", date='" + date + '\'' +
-                '}';
-    }
-
     public Date(String title, String date) {
         this.title = title;
         this.date = date;
@@ -26,6 +17,15 @@ public class Date implements Serializable {
     // TODO: need an empty Constructor for for calls to snapshot.toObject(Date.class)
     public Date() {
 
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "Date{" +
+                "text='" + title + '\'' +
+                ", date='" + date + '\'' +
+                '}';
     }
 
     public String getTitle() {

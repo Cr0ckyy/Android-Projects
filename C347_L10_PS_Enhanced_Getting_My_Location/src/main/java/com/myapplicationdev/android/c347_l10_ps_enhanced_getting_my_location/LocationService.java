@@ -29,6 +29,47 @@ public class LocationService extends Service {
     FusedLocationProviderClient client;
     LocationCallback locationCallback;
 
+    public LocationService() {
+    }
+
+    @Override
+    public IBinder onBind(Intent intent) {
+        return binder;
+    }
+
+    private boolean checkLocationPermission() {
+        int permissionCheck_Coarse = ContextCompat.checkSelfPermission(
+                LocationService.this, Manifest.permission.ACCESS_COARSE_LOCATION);
+        int permissionCheck_Fine = ContextCompat.checkSelfPermission(
+                LocationService.this, Manifest.permission.ACCESS_FINE_LOCATION);
+
+        @SuppressLint("InlinedApi") int permissionCheck_Bg = ContextCompat.checkSelfPermission(
+                LocationService.this, Manifest.permission.ACCESS_BACKGROUND_LOCATION);
+
+        return permissionCheck_Coarse == PermissionChecker.PERMISSION_GRANTED
+                || permissionCheck_Fine == PermissionChecker.PERMISSION_GRANTED ||
+                permissionCheck_Bg == PermissionChecker.PERMISSION_GRANTED
+                ;
+    }
+
+    private void failedPermissionToast() {
+        Toast.makeText(this, "Location permission denied", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onDestroy() {
+        if (checkLocationPermission()) {
+            client.removeLocationUpdates(locationCallback);
+        } else {
+            failedPermissionToast();
+        }
+        super.onDestroy();
+    }
+
+    private String toStringCoordinates(Location location) {
+        return location.getLatitude() + ", " + location.getLongitude() + "\n";
+    }
+
     class LocationBinder extends Binder {
         //Location lastLocation;
         //LocationService locationService = LocationService.this;
@@ -93,46 +134,5 @@ public class LocationService extends Service {
                 failedPermissionToast();
             }
         }
-    }
-
-    public LocationService() {
-    }
-
-    @Override
-    public IBinder onBind(Intent intent) {
-        return binder;
-    }
-
-    private boolean checkLocationPermission() {
-        int permissionCheck_Coarse = ContextCompat.checkSelfPermission(
-                LocationService.this, Manifest.permission.ACCESS_COARSE_LOCATION);
-        int permissionCheck_Fine = ContextCompat.checkSelfPermission(
-                LocationService.this, Manifest.permission.ACCESS_FINE_LOCATION);
-
-        @SuppressLint("InlinedApi") int permissionCheck_Bg = ContextCompat.checkSelfPermission(
-                LocationService.this, Manifest.permission.ACCESS_BACKGROUND_LOCATION);
-
-        return permissionCheck_Coarse == PermissionChecker.PERMISSION_GRANTED
-                || permissionCheck_Fine == PermissionChecker.PERMISSION_GRANTED ||
-                permissionCheck_Bg == PermissionChecker.PERMISSION_GRANTED
-                ;
-    }
-
-    private void failedPermissionToast() {
-        Toast.makeText(this, "Location permission denied", Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void onDestroy() {
-        if (checkLocationPermission()) {
-            client.removeLocationUpdates(locationCallback);
-        } else {
-            failedPermissionToast();
-        }
-        super.onDestroy();
-    }
-
-    private String toStringCoordinates(Location location) {
-        return location.getLatitude() + ", " + location.getLongitude() + "\n";
     }
 }

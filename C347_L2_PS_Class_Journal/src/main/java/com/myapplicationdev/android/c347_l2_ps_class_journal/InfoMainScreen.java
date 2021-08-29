@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class InfoMainScreen extends AppCompatActivity {
 
     //---------------------Initial Setting--------------
-    Button btnRP, btnEmail,btnAdd;
+    Button btnRP, btnEmail, btnAdd;
     int requestCodeForC347 = 1;
     ListView lv;
     CustomAdapter aa;
@@ -61,11 +61,11 @@ public class InfoMainScreen extends AppCompatActivity {
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(InfoMainScreen.this,addData.class);
+                Intent intent = new Intent(InfoMainScreen.this, addData.class);
 
-                intent.putExtra("arrayCount",module.size()+1);
+                intent.putExtra("arrayCount", module.size() + 1);
 
-                startActivityForResult(intent,requestCodeForC347);
+                startActivityForResult(intent, requestCodeForC347);
             }
         });
 
@@ -79,9 +79,9 @@ public class InfoMainScreen extends AppCompatActivity {
                 email.putExtra(Intent.EXTRA_EMAIL,
                         new String[]{"jason_lim@rp.edu.sg"});
 
-                String text = "Hi faci, I am ...\n"  + "Please see my remarks so far thank you!\n\n";
-                for(int i = 0; i <module.size();i++){
-                    text += "Week " + (i + 1) + ": DG: " +module.get(i).getModuleGrade() + "\n";
+                String text = "Hi faci, I am ...\n" + "Please see my remarks so far thank you!\n\n";
+                for (int i = 0; i < module.size(); i++) {
+                    text += "Week " + (i + 1) + ": DG: " + module.get(i).getModuleGrade() + "\n";
                 }
 
                 email.putExtra(Intent.EXTRA_TEXT,
@@ -95,20 +95,21 @@ public class InfoMainScreen extends AppCompatActivity {
 
 
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         // Only handle when 2nd activity closed normally
         //  and data contains something
-        if(resultCode == RESULT_OK){
+        if (resultCode == RESULT_OK) {
             if (data != null) {
                 // Get data passed back from 2nd activity
                 String grade = data.getStringExtra("grade");
 
                 // If it is activity started by clicking 				//  Superman, create corresponding String
-                if(requestCode == requestCodeForC347){
-                    module.add(new Module("c347",module.size()+1,grade));
+                if (requestCode == requestCodeForC347) {
+                    module.add(new Module("c347", module.size() + 1, grade));
                     aa.notifyDataSetChanged();
                 }
                 // If 2nd activity started by clicking

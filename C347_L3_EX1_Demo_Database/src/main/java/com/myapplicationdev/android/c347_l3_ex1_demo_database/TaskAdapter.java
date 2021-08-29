@@ -2,13 +2,11 @@ package com.myapplicationdev.android.c347_l3_ex1_demo_database;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
-
 
 import androidx.annotation.NonNull;
 

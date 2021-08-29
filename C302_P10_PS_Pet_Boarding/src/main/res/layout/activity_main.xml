@@ -6,6 +6,7 @@
     android:orientation="vertical"
     android:padding="20dp"
     tools:context=".MainActivity">
+
     <TextView
         android:id="@+id/textViewFirebaseOutput"
         android:layout_width="match_parent"

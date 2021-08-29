@@ -61,7 +61,7 @@ public class ScheduledNotificationReceiver extends BroadcastReceiver {
         builder.setLights(0xFFFF0000, 100, 100); // LED
 //      builder.setLights(Color.RED, 3000, 3000); // LED (using Color class)
         builder.setDefaults(Notification.DEFAULT_ALL); // Sound
-        builder.setVibrate(new long[] { 1000, 1000, 1000, 1000, 1000 }); // Vibration
+        builder.setVibrate(new long[]{1000, 1000, 1000, 1000, 1000}); // Vibration
         builder.setAutoCancel(true);
 
         Notification n = builder.build();

@@ -26,7 +26,6 @@ public class AboutActivity extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
 
 
-
         String imageUrl = "https://upload.wikimedia.org/wikipedia/commons/8/80/Republic_Polytechnic_Logo.jpg";
 
         // TODO: load URL image into ImageViews with Picasso

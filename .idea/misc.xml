@@ -103,6 +103,12 @@
         <entry key="..\:/C346/Workspace/P01/Combined_Android_Projects/C302_P12_PS_Traffic_Incidents/src/main/res/layout/activity_chart.xml" value="0.17831813576494426" />
         <entry key="..\:/C346/Workspace/P01/Combined_Android_Projects/C302_P12_PS_Traffic_Incidents/src/main/res/layout/activity_main.xml" value="0.19746376811594202" />
         <entry key="..\:/C346/Workspace/P01/Combined_Android_Projects/C302_P12_PS_Traffic_Incidents/src/main/res/menu/menu_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/C346/Workspace/P01/Combined_Android_Projects/C302_P13_PS_Movie_DB/src/main/res/layout/activity_create_movie.xml" value="0.18" />
+        <entry key="..\:/C346/Workspace/P01/Combined_Android_Projects/C302_P13_PS_Movie_DB/src/main/res/layout/activity_login.xml" value="0.19672131147540983" />
+        <entry key="..\:/C346/Workspace/P01/Combined_Android_Projects/C302_P13_PS_Movie_DB/src/main/res/layout/activity_main.xml" value="0.266304347826087" />
+        <entry key="..\:/C346/Workspace/P01/Combined_Android_Projects/C302_P13_PS_Movie_DB/src/main/res/layout/activity_view_movie_details.xml" value="0.19672131147540983" />
+        <entry key="..\:/C346/Workspace/P01/Combined_Android_Projects/C302_P13_PS_Movie_DB/src/main/res/layout/movie_row.xml" value="0.266304347826087" />
+        <entry key="..\:/C346/Workspace/P01/Combined_Android_Projects/C302_P13_PS_Movie_DB/src/main/res/menu/main.xml" value="0.3234375" />
         <entry key="..\:/C346/Workspace/P01/Combined_Android_Projects/C302_PHP_MYSQL_Magic_Assignment/src/main/res/layout/activity_main.xml" value="0.21829710144927536" />
         <entry key="..\:/C346/Workspace/P01/Combined_Android_Projects/C302_PHP_MYSQL_Magic_Assignment/src/main/res/layout/activity_show_card.xml" value="0.21829710144927536" />
         <entry key="..\:/C346/Workspace/P01/Combined_Android_Projects/C302_PHP_MYSQL_Magic_Assignment/src/main/res/layout/card_row.xml" value="0.21829710144927536" />

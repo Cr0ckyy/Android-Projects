@@ -1,11 +1,11 @@
+// default given modules
 include ':buyer', ':seller', ':common'
+
 
 include ':C347_L3_EX1_Demo_Database'
 include ':C347_L3_PS_Revision_Notes'
 include ':C347_L4_EX1_Demo_DatabaseCRUD'
 include ':C347_L4_PS_PS_NDP_Songs'
-
-
 include ':C347_L11_EX1_Demo_AlarmManager'
 include ':C347_L11_EX2_Demo_Notification'
 include ':C347_L11_EX3_Demo_Scheduled_Notification'
@@ -17,7 +17,6 @@ include ':C347_L9_EX1_Demo_LocationDetection'
 include ':C347_L9_EX2_Demo_FileReadWriting'
 include ':C347_L9_PS_Getting_My_Location'
 include ':C347_L8_EX1_Demo_Map'
-include ':L8_PS_Locating_A_Place'
 include ':C347_L8_PS_Locating_A_Place'
 include ':C347_L7_EX1_Demo_CoolDrawer'
 include ':C347_L7_EX2_Demo_Navigation'
@@ -39,21 +38,22 @@ include ':C347_L2_PS_Class_Journal'
 include ':C347_L5_EX1_Demo_Fragment'
 include ':C347_L5_EX2_Demo_Show_SMS'
 include ':C347_L5_PS_SMS_Retriever'
-include ':C347_L1_EX1_Demo_Database_CRUD'
 include ':C347_L4_EX1_Demo_Database_CRUD'
 include ':C347_L1_EX1 Demo_ImageView'
 include ':C347_L4_PS_NDP_Songs'
 include ':C347_L2_EX2_Demo_Implicit_Intent'
 include ':C347_L2_EX2_Demo_Implicit_Intent2'
+
+// C302 Web Services
 include ':C302_P06_PS_Sakila_Client'
 include ':C302_P07_PS_Address_Book'
 include ':C302_P08_PS_Secured_Cloud_Address_Book'
 include ':C302_P08_PS_Secured_Cloud_Address_Book2'
 include ':C302_P09_PS_mCafe'
-include ':C302_PHP_MYSQL_Magic_Assignment'
 include ':C302_P10_EX1_Firebase_Hello_World'
 include ':C302_P10_PS_Pet_Boarding'
 include ':C302_P11_EX1_Firebase_Student_App'
 include ':C302_P11_PS_Firebase_Inventory_App'
-
 include ':C302_P12_PS_DataMall_Traffic_Incidents'
+include ':C302_P13_PS_Movie_DB'
+include ':C302_PHP_MYSQL_Magic_Assignment'

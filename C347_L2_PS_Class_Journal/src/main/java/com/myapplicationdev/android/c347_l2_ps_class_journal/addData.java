@@ -14,7 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class addData extends AppCompatActivity {
     TextView tvWeek;
     RadioGroup rg;
-    RadioButton a,b,c,d,f,x;
+    RadioButton a, b, c, d, f, x;
     ImageView iv;
     Button btn;
 
@@ -23,13 +23,13 @@ public class addData extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_data);
-        rg=(RadioGroup) this.findViewById(R.id.rg);
-        a=(RadioButton) this.findViewById(R.id.radioButtonA);
-        b=(RadioButton) this.findViewById(R.id.radioButtonB);
-        c=(RadioButton) this.findViewById(R.id.radioButtonC);
-        d=(RadioButton) this.findViewById(R.id.radioButtonD);
-        f=(RadioButton) this.findViewById(R.id.radioButtonF);
-        x=(RadioButton) this.findViewById(R.id.radioButtonX);
+        rg = (RadioGroup) this.findViewById(R.id.rg);
+        a = (RadioButton) this.findViewById(R.id.radioButtonA);
+        b = (RadioButton) this.findViewById(R.id.radioButtonB);
+        c = (RadioButton) this.findViewById(R.id.radioButtonC);
+        d = (RadioButton) this.findViewById(R.id.radioButtonD);
+        f = (RadioButton) this.findViewById(R.id.radioButtonF);
+        x = (RadioButton) this.findViewById(R.id.radioButtonX);
         iv = (ImageView) this.findViewById(R.id.imageView2);
         btn = (Button) this.findViewById(R.id.button);
         tvWeek = (TextView) this.findViewById(R.id.textView);
@@ -37,7 +37,7 @@ public class addData extends AppCompatActivity {
         Intent get = getIntent();
         int selectedType = get.getIntExtra("arrayCount", 0);
 
-        tvWeek.setText(" Week "+selectedType);
+        tvWeek.setText(" Week " + selectedType);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,8 +71,7 @@ public class addData extends AppCompatActivity {
                     // Set result to RESULT_OK to indicate normal			// response and pass in the intent containing the 		// like
                     setResult(RESULT_OK, i);
                     finish();
-                }
-                else if (x.isChecked()) {
+                } else if (x.isChecked()) {
                     i.putExtra("grade", "X");
                     // Set result to RESULT_OK to indicate normal			// response and pass in the intent containing the 		// like
                     setResult(RESULT_OK, i);
@@ -81,9 +80,6 @@ public class addData extends AppCompatActivity {
 
             }
         });
-
-
-
 
 
     }

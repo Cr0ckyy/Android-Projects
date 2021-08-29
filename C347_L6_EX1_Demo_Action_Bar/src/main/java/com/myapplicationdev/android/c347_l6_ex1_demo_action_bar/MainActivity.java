@@ -1,9 +1,9 @@
 package com.myapplicationdev.android.c347_l6_ex1_demo_action_bar;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.Menu;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 

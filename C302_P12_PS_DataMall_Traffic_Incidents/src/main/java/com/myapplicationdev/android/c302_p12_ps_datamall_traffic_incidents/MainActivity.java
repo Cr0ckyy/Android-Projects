@@ -36,10 +36,12 @@ import cz.msebera.android.httpclient.Header;
 
 public class MainActivity extends AppCompatActivity {
 
-    ListView listView;
+    ListView incidentListView;
     ArrayList<Incident> incidents;
     IncidentAdapter incidentAdapter;
     AsyncHttpClient client;
+
+    // TODO: Task 1 - Declare Firebase variables
     FirebaseFirestore fireStore;
     CollectionReference collectionReference;
 
@@ -48,18 +50,68 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        listView = findViewById(R.id.lv);
+        incidentListView = findViewById(R.id.lv);
+
+        //TODO: Set ArrayList, then add data to adapter, then set ListView
         incidents = new ArrayList<>();
         incidentAdapter = new IncidentAdapter(this, R.layout.incident_row, incidents);
-        listView.setAdapter(incidentAdapter);
+        incidentListView.setAdapter(incidentAdapter);
+
+        // TODO: get fireStore collection instance
         fireStore = FirebaseFirestore.getInstance();
         collectionReference = fireStore.collection("incidents");
-        getData();
+        getIncidents();
 
-        listView.setOnItemClickListener((AdapterView<?> parent, View view, int position, long id) -> {
+        incidentListView.setOnItemClickListener((AdapterView<?> parent, View view, int position, long id) -> {
             Intent intent = new Intent(MainActivity.this, MapsActivity.class);
             intent.putExtra("incidentSelected", incidents.get(position));
             startActivity(intent);
+        });
+    }
+
+    private void getIncidents() {
+
+        // TODO: getIncidents , by creating AsyncHttpClient that retrieves incident data from the url
+        client = new AsyncHttpClient();
+        String url = "http://datamall2.mytransport.sg/ltaodataservice/TrafficIncidents";
+        // Sets headers for all requests made by the client (before sending)
+        client.addHeader("AccountKey", "GQ0cDI3gSsGPJ8gHZzLMSg==");
+        client.addHeader("accept", "application/json");
+
+        client.get(url, new JsonHttpResponseHandler() {
+            @Override
+            // If the response is JSONObject instead of expected JSONArray
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+
+                // clear the incident ArrayList to update new data
+                incidents.clear();
+                try {
+                    JSONArray incidentJSONArray = response.getJSONArray("value");
+                    Log.i("incidentJSONArray", incidentJSONArray.toString());
+
+                    //iterate through the incidents JSONArray is used to retrieve the data that will be added to the incident ArrayList
+                    for (int i = 0; i < incidentJSONArray.length(); i++) {
+
+                        JSONObject incidentJSONObject = (JSONObject) incidentJSONArray.get(i);
+                        String type = incidentJSONObject.getString("Type");
+                        double latitude = incidentJSONObject.getDouble("Latitude");
+                        double longitude = incidentJSONObject.getDouble("Longitude");
+                        String message = incidentJSONObject.getString("Message");
+
+                        @SuppressLint("SimpleDateFormat") DateFormat dateformat = new SimpleDateFormat("(dd/MM)HH:mm");
+                        String dateString = message.split(" ")[0];
+                        Date date = dateformat.parse(dateString);
+
+                        // add the retrieved data into incident ArrayList
+                        Incident newIncident = new Incident(type, latitude, longitude, message, date);
+                        incidents.add(newIncident);
+                    }
+                    // reload incidentAdapter thus renew incidentListView
+                    incidentAdapter.notifyDataSetChanged();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
         });
     }
 
@@ -113,7 +165,7 @@ public class MainActivity extends AppCompatActivity {
             dialog.show();
 
         } else if (menuItemID == R.id.itemReload) {
-            getData();
+            getIncidents();
             Toast.makeText(MainActivity.this, "The information has been reloaded.", Toast.LENGTH_SHORT).show();
 
         } else if (menuItemID == R.id.itemChart) {
@@ -123,43 +175,5 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void getData() {
-        client = new AsyncHttpClient();
-        client.addHeader("AccountKey", "GQ0cDI3gSsGPJ8gHZzLMSg==");
-        client.addHeader("accept", "application/json");
-
-        client.get("http://datamall2.mytransport.sg/ltaodataservice/TrafficIncidents",
-                new JsonHttpResponseHandler() {
-                    @Override
-                    public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                        // If the response is JSONObject instead of expected JSONArray
-                        JSONObject incidentJSONObject = null;
-                        incidents.clear();
-                        try {
-                            JSONArray incidentJSONArray = response.getJSONArray("value");
-                            Log.i("incidentJSONArray", incidentJSONArray.toString());
-
-                            for (int i = 0; i < incidentJSONArray.length(); i++) {
-                                incidentJSONObject = (JSONObject) incidentJSONArray.get(i);
-                                String type = incidentJSONObject.getString("Type");
-                                double latitude = incidentJSONObject.getDouble("Latitude");
-                                double longitude = incidentJSONObject.getDouble("Longitude");
-                                String message = incidentJSONObject.getString("Message");
-
-                                @SuppressLint("SimpleDateFormat") DateFormat dateformat =
-                                        new SimpleDateFormat("(dd/MM)HH:mm");
-                                String dateString = message.split(" ")[0];
-                                Date date = dateformat.parse(dateString);
-
-                                Incident newIncident = new Incident(type, latitude, longitude, message, date);
-                                incidents.add(newIncident);
-                            }
-                            incidentAdapter.notifyDataSetChanged();
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    }
-                });
-    }
 
 }

@@ -44,7 +44,7 @@ public class AnniversaryFragment extends Fragment {
         FloatingActionButton floatingActionButton = view.findViewById(R.id.fab3);
         tvShow = view.findViewById(R.id.tvShowAnniv);
         btnAnniversaryFragment = view.findViewById(R.id.btnFragAnni);
-        drawerLayout =  view.findViewById(R.id.drawer_layout);
+        drawerLayout = view.findViewById(R.id.drawer_layout);
 
         actionBar = ((AppCompatActivity) requireActivity()).getSupportActionBar();
         assert actionBar != null;

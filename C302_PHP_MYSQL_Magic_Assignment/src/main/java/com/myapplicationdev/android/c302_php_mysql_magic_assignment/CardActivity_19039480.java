@@ -33,19 +33,16 @@ import cz.msebera.android.httpclient.Header;
 
 public class CardActivity_19039480 extends AppCompatActivity {
     public static final String TAG = CardActivity_19039480.class.getName();
-
+    // TODO: declare sharedPreferences that can be used to pass user data around the application
+    public static final String SHARED_PREFERENCES = "sharedPreferences";
     ListView cardListView;
     ArrayList<Card> cardArrayList;
     ArrayAdapter<Card> cardArrayAdapter;
-
     // TODO (3) Declare loginId ,  apikey and role , colourId to be used
     String loginId;
     String apikey;
     String role;
     int colourId;
-
-    // TODO: declare sharedPreferences that can be used to pass user data around the application
-    public static final String SHARED_PREFERENCES = "sharedPreferences";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

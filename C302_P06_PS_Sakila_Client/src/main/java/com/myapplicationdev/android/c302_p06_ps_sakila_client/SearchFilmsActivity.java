@@ -1,15 +1,23 @@
 package com.myapplicationdev.android.c302_p06_ps_sakila_client;
+
 import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
-import com.loopj.android.http.*;
+
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.util.ArrayList;
-import cz.msebera.android.httpclient.*;
+
+import cz.msebera.android.httpclient.Header;
 
 public class SearchFilmsActivity extends AppCompatActivity {
 

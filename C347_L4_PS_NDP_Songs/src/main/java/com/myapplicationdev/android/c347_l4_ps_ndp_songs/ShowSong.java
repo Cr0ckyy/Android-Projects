@@ -29,7 +29,7 @@ public class ShowSong extends AppCompatActivity {
         setContentView(R.layout.activity_show);
 
         lv = this.findViewById(R.id.lvSongs);
-        show5 =  this.findViewById(R.id.buttonShow5);
+        show5 = this.findViewById(R.id.buttonShow5);
 
         Intent i = getIntent();
 

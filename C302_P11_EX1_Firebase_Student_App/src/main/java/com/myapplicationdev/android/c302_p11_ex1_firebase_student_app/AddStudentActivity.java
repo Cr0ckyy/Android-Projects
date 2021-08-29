@@ -23,10 +23,10 @@ public class AddStudentActivity extends AppCompatActivity {
     EditText etName, etAge;
     Button btnAdd;
 
-    FirebaseFirestore fireStore;
-    CollectionReference collectionReference;
-    DocumentReference documentReference;
-    static Message message;
+    // TODO: Task 1 - Declare Firebase variables
+    FirebaseFirestore db;
+    CollectionReference colRef;
+    DocumentReference docRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,31 +37,40 @@ public class AddStudentActivity extends AppCompatActivity {
         etAge = findViewById(R.id.editTextAge);
         btnAdd = findViewById(R.id.buttonAdd);
 
-        // TODO: getting fireStore collection & document References
-        fireStore = FirebaseFirestore.getInstance();
-        collectionReference = fireStore.collection("students");
-        documentReference = collectionReference.document("student");
 
-        documentReference.addSnapshotListener((@Nullable DocumentSnapshot snapshot,
-                                               @Nullable FirebaseFirestoreException e) -> {
+        // TODO: Task 2: Get FirebaseFirestore instance and collection reference to "students"
+
+        db = FirebaseFirestore.getInstance();
+
+        colRef = db.collection("students");
+        docRef = colRef.document("student");
+        docRef.addSnapshotListener((@Nullable DocumentSnapshot snapshot,
+                                    @Nullable FirebaseFirestoreException e) -> {
             if (e != null) {
                 return;
             }
+
             if (snapshot != null && snapshot.exists()) {
-                // Returns the document's POJO content/null if the document doesn't exist.
-                message = snapshot.toObject(Message.class);
+                Message msg = snapshot.toObject(Message.class);
             }
         });
 
         btnAdd.setOnClickListener((View v) -> {
 
-            // TODO: setting data for FireStore DocumentReference to add data
+            //TODO: Task 3: Retrieve name and age from EditText and instantiate a new Student object
+            //TODO: Task 4: Add student to database and go back to main screen
             String name = etName.getText().toString();
             String age = etAge.getText().toString();
+
             Student student = new Student(name, Integer.parseInt(age));
-            fireStore.collection("students").add(student);
+
+            db.collection("students").add(student);
+
 
             finish();
+
         });
+
+
     }
 }

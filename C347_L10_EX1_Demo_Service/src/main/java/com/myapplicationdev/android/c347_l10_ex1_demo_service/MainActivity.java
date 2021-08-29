@@ -14,8 +14,6 @@ public class MainActivity extends AppCompatActivity {
 
     Button btnStart, btnStop, btnBind, btnUnbind;
     MyService.DownloadBinder downloadBinder;
-    Intent intent, bindIntent;
-
     final ServiceConnection connection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
@@ -28,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         public void onServiceDisconnected(ComponentName componentName) {
         }
     };
-
+    Intent intent, bindIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

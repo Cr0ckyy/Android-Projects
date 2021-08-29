@@ -1,4 +1,3 @@
-
 package com.myapplicationdev.android.c302_p09_ps_mcafe;
 
 import android.content.Intent;
@@ -22,17 +21,15 @@ import cz.msebera.android.httpclient.Header;
 
 public class LoginActivity extends AppCompatActivity {
 
+    // Set up sharedPreferences
+    public static final String SHARED_PREFS = "sharedPrefs";
+    public static final String LOGIN_ID = "sharedLoginID";
+    public static final String PASSWORD = "sharedPassword";
     static final String TAG = "LoginActivity";
     EditText etLoginID, etPassword;
     Button btnSubmit;
     String username;
     String password;
-
-    // Set up sharedPreferences
-    public static final String SHARED_PREFS = "sharedPrefs";
-    public static final String LOGIN_ID = "sharedLoginID";
-    public static final String PASSWORD = "sharedPassword";
-
     String savedLoginId;
     String savedPassword;
 
@@ -78,7 +75,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 try {
-                    // TODO: Upon successful user input, MYSQL's JSONObject responses are returned.
+                    // TODO: Upon successful user input, MYSQL's JSONObject responses are returned
                     String id = response.getString("id");
                     String apiKey = response.getString("apikey");
 

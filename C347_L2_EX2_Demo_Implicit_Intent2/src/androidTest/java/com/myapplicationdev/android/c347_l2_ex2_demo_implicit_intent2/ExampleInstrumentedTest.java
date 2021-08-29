@@ -1,14 +1,14 @@
 package com.myapplicationdev.android.c347_l2_ex2_demo_implicit_intent2;
 
+import static org.junit.Assert.assertEquals;
+
 import android.content.Context;
 
-import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
+import androidx.test.platform.app.InstrumentationRegistry;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
-import static org.junit.Assert.*;
 
 /**
  * Instrumented test, which will execute on an Android device.

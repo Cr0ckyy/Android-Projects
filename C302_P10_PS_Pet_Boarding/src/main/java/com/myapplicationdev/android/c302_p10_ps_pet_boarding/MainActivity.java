@@ -24,6 +24,7 @@ import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
+    static Pet myPet;
     TextView textViewFirebaseOutput;
     Button btnSend;
     EditText etName, etNumberOfDays, etBoardingDate;
@@ -35,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
     FirebaseFirestore fireStore;
     CollectionReference collectionReference;
     DocumentReference documentReference;
-    static Pet myPet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

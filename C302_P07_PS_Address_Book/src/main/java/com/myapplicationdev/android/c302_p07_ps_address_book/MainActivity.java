@@ -2,7 +2,6 @@ package com.myapplicationdev.android.c302_p07_ps_address_book;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -42,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-		//TODO: call getListOfContacts.php to retrieve all contact details
+        //TODO: call getListOfContacts.php to retrieve all contact details
         alContact = new ArrayList<Contact>();
         aaContact = new ContactAdapter(getApplicationContext(), R.layout.contact_row, alContact);
         lvContact.setAdapter(aaContact);
@@ -56,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     for (int i = 0; i < response.length(); i++) {
                         JSONObject category = (JSONObject) response.get(i);
-                        Contact c = new Contact(category.getInt("id"), category.getString("firstname"),  category.getString("lastname"),  category.getString("mobile"));
+                        Contact c = new Contact(category.getInt("id"), category.getString("firstname"), category.getString("lastname"), category.getString("mobile"));
                         alContact.add(c);
 
                     }
@@ -106,10 +105,6 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
-
-
-
 
 
 }

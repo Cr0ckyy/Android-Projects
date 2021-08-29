@@ -30,8 +30,8 @@ public class ContactAdapter extends ArrayAdapter<Contact> {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         @SuppressLint("ViewHolder") View rowView = inflater.inflate(R.layout.contact_row, parent, false);
 
-        TextView tvName =  rowView.findViewById(R.id.tvName);
-        TextView tvMobile =  rowView.findViewById(R.id.tvMobile);
+        TextView tvName = rowView.findViewById(R.id.tvName);
+        TextView tvMobile = rowView.findViewById(R.id.tvMobile);
 
         Contact contact = alContact.get(position);
 

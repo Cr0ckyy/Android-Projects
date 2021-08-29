@@ -30,15 +30,12 @@ import cz.msebera.android.httpclient.Header;
 
 public class LoginActivity extends AppCompatActivity {
     public static final String TAG = LoginActivity.class.getName();
-
-    EditText etLoginId, etPassword;
-    Button btnLogin;
-
     // TODO: declare sharedPreferences that can be used to save user data around the application even if it destroyed
     static final String SHARED_PREFERENCES = "sharedPreferences";
     static final String SHARED_LOGIN_ID = "sharedLoginID";
     static final String SHARED_PASSWORD = "sharedPassword";
-
+    EditText etLoginId, etPassword;
+    Button btnLogin;
     // TODO: declare variables to enable users to log in
     String username, password;
     String savedLoginId;

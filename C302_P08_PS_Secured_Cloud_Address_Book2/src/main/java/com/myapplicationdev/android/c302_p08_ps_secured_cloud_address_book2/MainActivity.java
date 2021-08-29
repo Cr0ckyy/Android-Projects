@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        lvContact =  findViewById(R.id.listViewContact);
+        lvContact = findViewById(R.id.listViewContact);
         alContact = new ArrayList<>();
         aaContact = new ContactAdapter(this, R.layout.contact_row, alContact);
         lvContact.setAdapter(aaContact);

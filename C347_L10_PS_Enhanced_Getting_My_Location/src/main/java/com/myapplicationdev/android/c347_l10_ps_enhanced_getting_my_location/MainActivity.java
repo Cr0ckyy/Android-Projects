@@ -39,6 +39,19 @@ public class MainActivity extends AppCompatActivity {
     // singapore centre's coordinates
     LatLng singaporeCoords = new LatLng(1.3521, 103.8198);
     Marker currentLocationMarker;
+    LocationService.LocationBinder binder;
+    ServiceConnection connection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+            binder = (LocationService.LocationBinder) iBinder;
+            binder.start(MainActivity.this);
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName componentName) {
+            System.out.println("disconnected");
+        }
+    };
 
     @RequiresApi(api = Build.VERSION_CODES.Q)
     @Override
@@ -104,20 +117,6 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
     }
-
-    LocationService.LocationBinder binder;
-    ServiceConnection connection = new ServiceConnection() {
-        @Override
-        public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
-            binder = (LocationService.LocationBinder) iBinder;
-            binder.start(MainActivity.this);
-        }
-
-        @Override
-        public void onServiceDisconnected(ComponentName componentName) {
-            System.out.println("disconnected");
-        }
-    };
 
     void updateLastLocation(Location location) {
         coordinatesTextView.setText(toStringCoordinates(location));

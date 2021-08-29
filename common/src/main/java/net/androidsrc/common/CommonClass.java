@@ -5,5 +5,5 @@ package net.androidsrc.common;
  */
 
 public class CommonClass {
-    public static String MESSAGE="Hello From Common Class";
+    public static String MESSAGE = "Hello From Common Class";
 }

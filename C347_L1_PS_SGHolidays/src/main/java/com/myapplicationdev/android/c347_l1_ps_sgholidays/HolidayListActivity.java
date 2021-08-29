@@ -43,8 +43,7 @@ public class HolidayListActivity extends AppCompatActivity {
             holidays.add(new Holiday("National Day",
                     "9 Aug 2021",
                     R.drawable.national_day));
-        }
-        else if (holidayType.equals("Ethnic & Religion")) {
+        } else if (holidayType.equals("Ethnic & Religion")) {
             holidays.add(new Holiday("Chinese New Year",
                     "12-13 Feb 2021",
                     R.drawable.cny));

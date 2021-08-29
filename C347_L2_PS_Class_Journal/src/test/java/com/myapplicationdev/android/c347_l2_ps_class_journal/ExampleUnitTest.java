@@ -1,8 +1,8 @@
 package com.myapplicationdev.android.c347_l2_ps_class_journal;
 
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
-import static org.junit.Assert.*;
+import org.junit.Test;
 
 /**
  * Example local unit test, which will execute on the development machine (host).

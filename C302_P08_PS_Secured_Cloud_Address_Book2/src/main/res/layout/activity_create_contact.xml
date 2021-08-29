@@ -1,25 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CreateContactActivity"
     android:orientation="vertical"
-    android:padding="20dp">
+    android:padding="20dp"
+    tools:context=".CreateContactActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="5dip"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="5dip">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
+            android:layout_weight="0"
             android:text="First Name"
-            android:layout_weight="0" />
+            android:textSize="20sp" />
 
         <EditText
             android:id="@+id/etFirstName"
@@ -34,15 +33,15 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="5dip"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="5dip">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
+            android:layout_weight="0"
             android:text="Last Name"
-            android:layout_weight="0" />
+            android:textSize="20sp" />
 
         <EditText
             android:id="@+id/etLastName"
@@ -77,8 +76,8 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/btnCreate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Create Contact"
-        android:id="@+id/btnCreate" />
+        android:text="Create Contact" />
 </LinearLayout>
