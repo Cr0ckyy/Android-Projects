@@ -1,6 +1,6 @@
 package com.example.c347_l13_ex2_demo_kotlin_loop
 
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
 class MainActivity : AppCompatActivity() {
