@@ -151,9 +151,10 @@
         <entry key="..\:/C346/Workspace/P01/Combined_Android_Projects/C347_L7_PS_My_Data_Book/src/main/res/layout/biofragment.xml" value="0.2817028985507246" />
         <entry key="..\:/C346/Workspace/P01/Combined_Android_Projects/C347_L7_PS_My_Data_Book/src/main/res/layout/customalert.xml" value="0.2817028985507246" />
         <entry key="..\:/C346/Workspace/P01/Combined_Android_Projects/C347_L7_PS_My_Data_Book/src/main/res/menu/drawermenu.xml" value="0.2864583333333333" />
+        <entry key="..\:/Users/19039480/StudioProjects/Combined_Android_Projects/C347_L13_EX1_Demo_Kotlin_Basic/src/main/res/layout/activity_main.xml" value="0.21927083333333333" />
       </map>
     </option>
   </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="11" project-jdk-type="JavaSDK" />
 </project>
